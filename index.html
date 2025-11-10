@@ -1,0 +1,658 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; white-space: nowrap; overflow: visible; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<link rel='stylesheet' href='https://raw.githubusercontent.com/slashfoo/lmweb/master/style/latinmodern-mono-light.css' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: white;
+    --window-border: none;
+    --search-select-bg-color: #575c61;
+    --active-file-bg-color: #f1f4f5;
+    --item-hover-bg-color: #f1f4f5;
+    --item-hover-text-color: black;
+    --control-text-color: #555;
+}
+
+@include-when-export url(https://raw.githubusercontent.com/slashfoo/lmweb/master/style/latinmodern-mono-light.css);
+
+html {
+    font-size: 12pt;
+}
+
+#write {
+    font-family: "STIX2Text", "Times New Roman", "serif";
+    line-height: 1.5em;
+    padding: 10%;
+    padding-top: 5%;
+}
+
+.file-list-item-summary {
+    height: 36px;
+}
+
+.file-list-item {
+    padding-top: 18px !important;
+    padding-bottom: 18px;
+}
+
+#sidebar-loading-template.file-list-item {
+    padding-top: 0 !important;
+}
+
+a, a:visited {
+    color: #a00;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+h1  {
+    font-size: 2.4em;
+}
+
+#write h1  {
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.4em;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5  {
+    font-size: 1.1em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+pre, code {
+    font-family: 'Latin Modern Mono Light', "Latin Modern Mono", monospace !important;
+}
+
+.footnotes {
+    display: list-item;
+    margin-left: 1em;
+}
+
+.md-fences {
+    border: 1px solid;
+}
+
+.md-fences.md-fences-with-lineno {
+    border: none;
+}
+
+.CodeMirror-linenumber {
+    color: #333;
+}
+
+*.in-text-selection,
+::selection,
+.CodeMirror-selected {
+    background: var(--search-select-bg-color);
+    color: var(--search-select-text-color) !important;
+    text-shadow: none;
+}
+
+a.md-toc-inner {
+    color: var(--text-color);
+}
+
+.cm-s-typora-default .cm-link {
+    color: #a00;
+    text-decoration: underline;
+}
+
+.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property {
+    color: black;
+}
+
+#typora-source .CodeMirror-lines {
+    -webkit-font-smoothing: auto;
+    max-width: 1000px;
+}
+
+.md-def-name:before,
+.md-def-name:after {
+    color: #2d2d2d;
+}
+
+sup.md-footnote {
+    background-color: initial;
+    color: inherit;
+}
+
+mark {
+    background: #fff387;
+}
+
+td, th {
+    border: 1px solid;
+    padding-left: 1ch;
+    padding-right: 1ch;
+}
+
+/*table tr[cid]:first-child > td {
+    border-top: 3px double;
+}*/
+
+th {
+    border-bottom: 0;
+    padding-top: 2px;
+    background: #575c61;
+    border-color: #333;
+    color: #f3f3f3;
+}
+
+pre.md-meta-block {
+    border: 1px solid #a2a9b1;
+    background-color: #f8f9fa;
+    padding: 5px;
+    margin-bottom: 1em;
+}
+
+.task-list-item input:before {
+    content: '\221A';
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.6rem;
+    vertical-align: middle;
+    text-align: center;
+    color: #bbb;
+    background-color: inherit;
+}
+
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before{
+    color: inherit;
+}
+
+.md-task-list-item > input {
+    top: auto;
+    margin-left: -1.1em;
+    font-size: 1.3em;
+    margin-top: 0px;
+    -webkit-appearance: none;
+}
+
+.md-task-list-item input:before {
+    content: '\2610';
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.6rem;
+    vertical-align: middle;
+    text-align: center;
+    color: #bbb;
+    background-color: inherit;
+}
+
+.md-task-list-item input:checked:before,
+.md-task-list-item input[checked]:before{
+    color: inherit;
+    content: '\2611';
+}
+
+.task-list-item {
+    padding-left: 1.5em;
+}
+
+blockquote {
+    font-style: italic;
+    padding: 0.25em 24px;
+    position: relative;
+    color: #383838;
+    border-left: 2px solid;
+    
+}
+
+#write > blockquote {
+    padding: 0.25em 30px;
+    margin-left: -32px;
+    width: calc(100% + 32px);
+}
+
+#write >  .md-fences-with-lineno {
+    margin-left: -33px;
+    color: black;
+}
+
+.CodeMirror-linenumber {
+    min-width: 25px;
+}
+
+.md-header {
+    font-size: inherit !important;
+}
+
+/*blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a;
+}*/
+</style>
+<style type='text/css'  id="style-mathjax">
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG2"] path[data-c], mjx-container[jax="SVG2"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+</style>
+<style type='text/css'  id="style-mathjax-ni">mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>第五届星光音乐会歌曲不完全向指北</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='第五届星光音乐会歌曲不完全向指北'><span>第五届星光音乐会歌曲不完全向指北</span></h1><p><span>编者：煌穹</span></p><p><span>Tips：由于部分演出组合会演出2首及以上歌曲，这里编号与节目单上的顺序略有差别，请读者朋友们稍加分辨；此外，本文件点评部分只代表煌穹个人意见。</span></p><h2 id='上半场'><span>上半场</span></h2><h3 id='1past-the-stargazing-season即使错过观星的季节------宅舞'><span>1.Past the Stargazing Season（即使错过观星的季节）——宅舞</span></h3><p><span>表演者：你好早上要来一杯咖啡吗</span></p><h4 id='歌曲简介'><span>歌曲简介</span></h4><p><img src="images/1.png" alt="Logo"></p><p><span>Past the Stargazing Season（中文：即使错过观星的季节），是Mili对H△G的作品「星見る頃を過ぎても」一曲的重混，2013年8月26日发布于youtube。同年11月收录于专辑《H△G × Mili》，曲名为「星見る頃を過ぎても -Canon and Gigue in Plectrum Remix-」，本次星光中出现的版本便为此英文版。</span></p><h4 id='乐队简介'><span>乐队简介</span></h4><p><span>H△G（ハグ）是由Chiho担任主唱，以及其他作曲家&amp;创作者集团所组成的。H△G（ハグ）是HAG（女巫）和HUG（拥抱）变来的，主唱“Chiho”希望她的歌可以用歌声来抚慰大家青春期的躁动和不安，以及对未来的迷惘和憧憬。</span></p><p><img src="https://th.bing.com/th/id/OIP.pICHhdTH-U_SCpo8JCxsDQHaHa?w=162&amp;h=180&amp;c=7&amp;r=0&amp;o=7&amp;dpr=1.5&amp;pid=1.7&amp;rm=3" alt="h△g 的图像结果"></p><p><span>Mili是一个由葛西大和和momocashew创建的音乐团体。来自日本的独立音乐团体，成立于2012年8月。擅长电子音乐，作曲风格多样。歌词多为意识流风格。歌曲多以英语演唱，但也使用过日语，中文和法语等语言，有时也会使用自创的架空语言。成立的契机是momocashew翻唱了HAMO的V家曲「It&#39;s a wonderful world」</span></p><h4 id='个人向点评'><span>个人向点评</span></h4><p><img src="images/2.png" alt="Logo" style="zoom:44%;" /></p><p><span>VOCALOID文化圈，常被誉为日本流行音乐的“黄埔军校”。那些早年活跃于Niconico的P主们，在时光的淬炼中曲风日渐成熟、不断突破，其中的佼佼者纷纷走向更广阔的音乐舞台——有的组建起独立乐队，有的成为唱作兼备的歌手；而那些曾只在屏幕后吟唱的唱见们，也陆续走到聚光灯下，以真实的嗓音与现场演绎，将曾经虚拟的情感化为可触的共鸣。</span></p><p><span>在这股浪潮中，Chiho与葛西大和正是两颗交相辉映的星辰。他们的合作不仅是两种音乐风格的碰撞融合，更让我们亲眼见证——从VOCALOID这片创作的土壤中，生长出了怎样一片繁花似锦的流行文化图景。</span></p><p><span>而在网易云等音乐平台上，H</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.885ex" height="1.62ex" role="img" focusable="false" viewBox="0 -716 833 716" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-8-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="394" xlink:href="#MJX-8-TEX-N-394"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Δ</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Delta</script><span>G推出的VOCALOID翻唱专辑《声 ~VOCALOID Cover Album~》，成为许多人认识H</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.885ex" height="1.62ex" role="img" focusable="false" viewBox="0 -716 833 716" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-8-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="394" xlink:href="#MJX-8-TEX-N-394"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Δ</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Delta</script><span>G、乃至初探术力口世界的第一扇窗。其中几首，至今仍被反复聆听：</span></p><ul><li><p><span>《心拍数♯0822》</span></p></li><li><p><span>《アイロニ》</span></p></li><li><p><span>《桜ノ雨》</span></p></li><li><p><span>《地球最後の告白を》</span></p></li><li><p><span>《from Y to Y》</span></p></li></ul><p><span>对我而言，H</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.885ex" height="1.62ex" role="img" focusable="false" viewBox="0 -716 833 716" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-8-TEX-N-394" d="M51 0Q46 4 46 7Q46 9 215 357T388 709Q391 716 416 716Q439 716 444 709Q447 705 616 357T786 7Q786 4 781 0H51ZM507 344L384 596L137 92L383 91H630Q630 93 507 344Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="394" xlink:href="#MJX-8-TEX-N-394"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Δ</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Delta</script><span>G与majiko分别演绎的《アイロニ》，正是我走进这个世界的起点。一个声音温柔如低语，一个嘶吼中尽是挣扎，她们以截然不同的方式诠释着同一份疼痛。在那段被成长迷茫与青春压抑笼罩的中学时光里，我相信有许多人同我一样，在一个个难以入眠的夜晚，透过她们的音乐，顺着耳机线传递的温度，去寻找那些——亟待被赋予意义的意义。</span></p><p>&nbsp;</p><h3 id='2god-knows------钢琴'><span>2.God Knows——钢琴</span></h3><p><span>演出者：豆沙团子</span></p><h4 id='歌曲简介-2'><span>歌曲简介</span></h4><p><img src="images/3.png" alt="Logo"></p><p><span>《God knows...》是TV动画《凉宫春日的忧郁》的插曲之一，发行于2006年6月21日，于06版动画第12话（对应09版动画第26话）中的文化祭上，由凉宫春日（CV：平野绫）演唱。本曲是知名Anisong，被无数组合翻唱也在各种live和节目上被反复上演。</span></p><p><span>本曲标志性的前奏与间奏部分的吉他solo，让人惊艳。歌词令人感动，也有激励人的作用。</span></p><h4 id='歌手简介'><span>歌手简介</span></h4><p><img src="images/0.webp" alt="Logo" style="zoom:45%;" /></p><p><span>平野绫是日本的女性演员、声优、歌手。参与配音的作品数不胜数，但是比较有意思的一个角色的是《寄生兽——生命的准则》的cv是她。平野绫在2000年代末至2010年代初被视为&quot;偶像声优&quot;的代表人物，亦是少数成功跨界主流娱乐圈的声优。她还是《幸运星》中泉此方 的声优，于是便有人创作了上图；事实上这也是平野绫作为声优具有强劲实力的证明之一：能完全驾驭不同声线的两种角色。</span></p><p><span>由于一些事迹与伤病的困扰，丛2010年起平野绫便很少接深夜动画的配音，在2011年后更是将事业重心转向了舞台剧。</span></p><p><span>个人希望有声之年还能看到水树奈奈和平野绫的再次同台演出。</span></p><h4 id='个人向点评-2'><span>个人向点评</span></h4><p><span>北高校园祭，可以号称史上最成功动画Live。这是有京阿尼对偶像音乐类型番剧的首次尝试，不妨把他看成是轻音少女的前瞻版本，鼓手、吉他solo、贝斯的全部对位还原，极高帧数的作画，这种种集中一点登峰造极的制作，创造了这场前无古人后无来者的动画live。不管此后有多少动画模仿，有多少二次元Live出现，但是再也没有一次可以完全超越这场Live。</span></p><p><strong><span>翻唱盘点</span></strong></p><ul><li><p><span>跨媒体企划《BanG Dream!》下乐队Poppin’party曾经翻唱过这首歌，并在早期的live中多次演唱；个人认为效果最好的一次是在18年的ASL上的那次接近着上一曲开始演奏的，略显疲惫的唱腔反而更加符合《God knows》本身的氛围。</span></p></li><li><p><span>动画《我们的重制人生》动画第5话的文化祭中出场。演唱者为小暮奈奈子(CV：爱美)，虽然和Poppin‘Party的演唱者实为一人，但是由于没有了ksm声线的限制，这首歌反而更贴合了爱美的声线，获得了更好的表现力。</span></p></li><li><p><span>手机游戏《偶像大师 灰姑娘女孩 星光舞台》与《凉宫春日的忧郁》的联动翻唱歌曲。（这我也是查资料才看到）</span></p></li></ul><h4 id='god-bless-吉超绊'><span>God-bless “吉超绊”</span></h4><p><span>能看到这首歌再次登上星光音乐会的舞台，无疑是令人无比激动和感慨的。打开b站，搜索“God Knows”，你会看到：</span>
+<img src="images/5.5.png" alt="Logo"></p><p>&nbsp;</p><p><span>第一行第四个视频便是本小节的讨论内容。</span></p><p><span>在那个注定被记忆留存的夜晚——2024年6月10日18:00，吉林大学前卫南区敬信报告厅，第三届星光音乐会正静静流淌着属于它的旋律。直到突如其来的设备故障，像一道无声的休止符，切断了所有预设的音频。寂静笼罩，演出几近停滞。</span></p><p><span>而就在那个瞬间，奇迹悄然发生。</span></p><p><span>键盘手率先走上台，接着是鼓手、吉他手、贝斯手——他们一个接一个，像被什么无形的力量牵引，补全了空缺的声部，撑起了中断的节奏。一场本应被定义为“演出事故”的夜晚，就这样被他们的双手，编织成了独一无二的光景。</span></p><p><span>后来我们才知道，据内部人员透露，只有《God knows》是所有人都曾练习过、烂熟于心的曲子。也正因如此，当意外来临，他们才能以如此默契的姿态，完成这场近乎不可能的救赎。</span></p><p><span>那一刻，凉宫春日原著中的文字仿佛穿越时空，在此刻轰然回响：</span></p><p><strong><span>“没有寒喧，没有通知，也没有司仪的串场。当救场大哥抓到韵律开始敲打时，演奏就突然开始了。光是那个前奏就差点让我从座位上滑下去。”</span></strong></p><p><span>而我，就坐在台下。小说与动画中的情节，如镜像般在眼前重演。激动与震惊交织成难以言说的战栗，那一刻，我不只是在观看一场演出——我是在见证某种信念的具象化，见证即兴的火焰如何点燃沉寂的夜空。</span></p><p><span>也许这就是现场的魅力，这就是音乐的力量。当预演的轨道断裂，真正的演奏才真正开始。</span></p><p>&nbsp;</p><h3 id='3青と夏青与夏------翻唱'><span>3.青と夏（青与夏）——翻唱</span></h3><p><span>演出者：QQQ</span></p><h4 id='歌曲简介-3'><span>歌曲简介</span></h4><p><img src="images/6.png" alt="Logo"></p><p><span>《青と夏》是日本摇滚乐队Mrs. GREEN APPLE的第七张单曲，初收录于专辑《Attitude》中，作为电影《青夏-与你相恋的30天-》的主题曲。同名单曲由日本环球音乐于2018年7月31日发行。</span></p><h4 id='乐队简介-2'><span>乐队简介</span></h4><p><img src="images/7.png" alt="Logo"></p><p><span>Mrs. GREEN APPLE是日本的流行摇滚乐队，现所属唱片公司为日本环球音乐旗下的EMI Records。乐队成立于2013年。于2015年签约EMI Records，正式出道。很长一段时间成员为5人，从2021年开始减少至3人。</span></p><p><span>2015年12月，发表出道后的首张单曲《Speaking》，标题曲用作电视动画《游戏王ARC-V》的第4首片尾曲。</span></p><p><span>2017年8月，发表出道后的单曲《WanteD! WanteD!》，其中C/W曲《On My MiND》用作电视动画《猜谜王》的片头曲。</span></p><p><span>2019年7月，发表数字单曲《インフェルノ》，用作电视动画《炎炎消防队》的第1首片头曲。</span></p><p><span>于2023年12月31日首次参加NHK红白歌合战。</span></p><p><span>2024年4月，发表数字单曲《ライラック》，用作电视动画《失忆投捕》的片头曲。</span></p><h4 id='个人向点评-3'><span>个人向点评</span></h4><p><span>绿苹果乐队的第16张单曲，登顶了Billboard JAPAN HOT 100榜单的榜首——这是当今J-POP界实至名归的巅峰时刻，也印证了他们作为日本流行音乐顶流的地位。</span></p><p><span>（所以……到底什么时候能来大陆开演唱会啊？！）</span></p><p><span>这首作品也曾被《BanG Dream!》企划旗下的Poppin’Party翻唱过。遗憾的是，至今我们仍未等到完整版的音源释出。只能默默期待某一天，武士道能听见乐迷的呼声，将这份完整的感动正式呈现在我们面前。</span></p><p><span>而如果你仔细观察，会发现真人电影《青夏 与你相恋的30天》简直像是《BanG Dream!》企划的“软广大片”——</span></p><p><img src="images/8.png" alt="Logo" style="zoom:30%;" /></p><p><span>画面后方的墙上，正是Poppin’Party代表曲《ティアドロップス》的MV画面；悬挂的海报中，清晰可见Poppin’Party、Roselia的团图与游戏宣传海报；甚至在这一帧对应的台词里，还出现了“mygo”一词（尽管这大概率只是巧合，毕竟当时青木阳菜与立石凛尚未成为响社成员）。</span></p><p><img src="images/9.png" alt="Logo" style="zoom:25%;" /></p><p><span>而爱美那一句“给我来一个”，配上这张堪称“神之侧颜”的截图——一切都让这部影片成了邦邦人心中一场心照不宣的彩蛋盛宴。</span></p><p>&nbsp;</p><h3 id='4call-of-silence------钢琴'><span>4.call of silence——钢琴</span></h3><p><span>演出者：我如归迷雁</span></p><h4 id='歌曲简介-4'><span>歌曲简介</span></h4><p><img src="images/10.png" alt="Logo"></p><p><span>《Call of Silence》Çα།། σΓ Šì|èй¢Ё是电视动画《进击的巨人》的插曲，由Gemie演唱。</span></p><p><span>收录在2017年6月7日发行的专辑《TVアニメ「進撃の巨人」Season_2_オリジナルサウンドトラック》中。</span></p><h4 id='作曲家介绍'><span>作曲家介绍</span></h4><p><img src="images/11.png" alt="Logo"></p><p><strong><span>泽野弘之</span></strong><span>是日本的作曲家、编曲家。他从小学习钢琴，17岁开始师从坪井伸亲学习作曲和交响编曲。他以电视剧、动画、电影等艺术作品为中心提供乐曲，例如《医龙》、《进击的巨人》、《罪恶王冠》等。</span></p><p><span>2015年5月，泽野弘之凭借《进击的巨人》背景音乐获得了2014年度JASRAC奖银奖。他为动画创作的配乐具有令人震撼的激昂感，因富有冲击性而常被冠以“神曲”名号，例如“拔剑神曲”《βίος》（出自《罪恶王冠》）、“核爆神曲”《aLIEz》（出自《ALDNOAH ZERO》）等。</span></p><p><span>他所创作的BGM作品名多为数字、字母、日文平/片假名、双关等组合，富有想象力，其各首BGM的名称通过变形转化可以变成作品或者其中角色的名字等。这种独特的命名方式被粉丝们戏称为“脸滚键盘式BGM起名法”。关于他独特的命名风格，有粉丝调侃道，总觉得有歌名其实是Anaesthetic(麻药)，然而泽野脸滚键盘打错了（指其早期知名作品《Aesthetic》）。</span></p><p><span>关于泽野弘之同时具有震撼和催泪的能力，对比他对自家神曲的变奏版便可感知，例如《βίος》和《βιοζ-δ》、《aLIEz》和《aLIEz [mZk ver.]》。</span></p><h4 id='个人向点评-4'><span>个人向点评</span></h4><p><strong><span>“You will know you’re reborn tonight”</span></strong>
+<strong><span>“你会明白，今夜你已重生”</span></strong></p><p><span>当尤弥尔望向道路汇聚的坐标时，她放肆嘲笑命运的无常；当艾伦陷于记忆的碎片长河当中，他只能沉默呼唤宿命的牢笼。「Don&#39;t you think about me enough? I&#39;ve been burning my heart out」当心灵燃烧起来的火焰殆尽，就连灰烬的余温都已然散却，谁又能说这不是一种满是遗憾的完结呢？然而无论是尤弥尔为她没能结婚的挚爱道出一句温柔的“对不起”，还是耶格尔面对将要奉为新时代英雄的挚爱再无话说的释然，他们终究走向了他们本不应当陷入的囹圄，但是，「So cry no more，Oh my beloved，Go ahead,be proud，And find it out」，还请擦干眼泪，勇敢向前，我们终究要跨越那面高墙，我们也必须跨越那面高墙，「You are the one，Our rising star」，你就是那冉冉升起的新星，愿我们所有人始终走在追寻自由的路上。（此文段由三笠供稿）</span></p><p>&nbsp;</p><h3 id='5specialz------翻唱'><span>5.Specialz——翻唱</span></h3><p><span>演出者：朽木不可白哉</span></p><h4 id='歌曲简介-5'><span>歌曲简介</span></h4><p><img src="images/12.png" alt="Logo"></p><p><span>《SPECIALZ》是TV动画《咒术回战》第2期的“涩谷事变篇”的片头曲，由知名乐队King Gnu演唱、吉他手兼任主唱的常田大希作词曲。</span></p><p><span>歌曲于2023年9月1日先行发布，后收录在同名单曲专辑，由日本索尼音乐娱乐旗下的Ariola Japan于当月6日正式发售。</span></p><h4 id='乐队简介-3'><span>乐队简介</span></h4><p><img src="images/13.png" alt="Logo"></p><p><span>King Gnu（王牛）是日本的一支摇滚乐队。2013年，就读于东京艺术大学的常田大希自发组建音乐团体“Src.Vinci”，在两年多的活动与成员变更之后，于2015年固定为常田大希、井口理、新井和辉和势喜游四名成员。并于2017年4月正式更名为King Gnu。其创作的ACG的歌曲还有：</span></p><ul><li><p><span>《Prayer X》 动画《战栗杀机》片尾曲</span></p></li><li><p><span>《BOY》        动画《国王排名》片头曲</span></p></li><li><p><span>《一途》</span><span>	</span><span>动画电影《剧场版 咒术回战0》主题曲</span></p></li><li><p><span>《逆夢》</span><span>	</span><span>动画电影《剧场版 咒术回战0》片尾曲</span></p></li><li><p><span>《TWILIGHT!!!》</span><span>	</span><span>剧场版动画《名侦探柯南 独眼的残像》主题曲</span></p></li></ul><p><span>此外，其知名歌曲《飛行艇》是全日本航空广告曲（全飞机的人跟着歌词“让生命摇曳”吗？太摇滚了）。</span></p><h4 id='个人向点评-5'><span>个人向点评</span></h4><p><img src="images/14.png" alt="Logo" style="zoom:25%;" /></p><p><span>主唱常田大希亲口说的：</span></p><p><span>“咒术回战中我最想做的就是反派的部分，在被邀请制作涩谷事变这一篇的歌的时候，当时就觉得老天有眼(划掉)神灵真的在看着呢。我真的超级喜欢真人，要说释放出压倒性魅力的果然还是真人这一帮人，果然还是真人这边的类似于气势的这种东西。”</span></p><p><span>据说在创作这首歌的时候，乐队已经知道了部分未来剧情走向，所以这首歌的mv不仅包括了类似“腰斩”（会赢的!）的类似意象，也有很多隐喻的桥段。很可惜的是咒术漫画后期已经无法避免地变烂，所幸的是我们还能感谢动画制作组和王牛为我们呈现上这场视听盛宴。让我们对咒术的回忆停留在涩谷事变吧。</span></p><p>&nbsp;</p><h3 id='6前前前世------钢琴'><span>6.前前前世——钢琴</span></h3><p><span>演出者：一团</span></p><h4 id='歌曲简介-6'><span>歌曲简介</span></h4><p><img src="images/15.png" alt="Logo"></p><p><span>电影《你的名字。》的插曲，由野田洋次郎作词曲，RADWIMPS演唱。电影所用版本《前前前世 (movie ver.)》收录于电影原声带专辑《君の名は。》。所谓的“movie ver.”并不是电影中使用的版本；所谓的“original ver.”才是电影中使用的版本。真·movie ver.下面加粗的歌词为original ver.多出的一段。</span></p><h4 id='乐队简介-4'><span>乐队简介</span></h4><p><img src="images/16.png" alt="Logo"></p><p><span>日本4人摇滚乐队，2001年正式出道。由主唱兼吉他手野田洋次郎、吉他手桑原彰（队长）、贝斯手武田佑介和鼓手山口智史组成。</span>
+<span>名字由RAD（英语俚语，激进的）和WIMP（没用的）结合而成。曾参与《你的名字。》和《天气之子》的OST制作，并大获成功。</span></p><p><span>(某张专辑封面似乎很熟悉，是谁在用呢？)</span></p><ul><li><p><span>2016年，RADWIMPS接手新海诚的动画电影《你的名字。》的音乐工作，涉足Anisong领域。同年年底被选入红白歌会。</span></p></li><li><p><span>2019年，RADWIMPS又为新海诚又一部动画电影《天气之子》制作配乐。</span></p></li><li><p><span>2022年，RADWIMPS接手新海诚的动画电影《铃芽之旅》的音乐工作，这是乐队连续三次为新海诚执导的电影制作相关音乐。</span></p></li></ul><h4 id='个人向点评-6'><span>个人向点评</span></h4><p><span>新海诚的“灾难三部曲”背后，有一支始终相伴的御用乐队，他们用音符为《你的名字》、《天气之子》与《铃芽之旅》织就了一张贯穿始终的情感之网。正是这种全程流淌的音乐脉络，让观众得以更深地沉入影片的情绪之海。而新海诚最擅长的，便是在剧情最恰当的时刻，让插入曲如命运般响起——那些恰如其分的歌词与节奏，往往能精准复现角色的心境，这也成为他电影中那些经典演出片段得以封神的重要原因。</span></p><p><span>是那些旋律，让我们记得：</span></p><p><span>是</span><strong><span>三叶与泷初次交换身体</span></strong><span>时那份手忙脚乱的开心，是灵魂错位中萌生的新奇与愉悦；</span></p><p><span>是</span><strong><span>三叶在公路上奔跑</span></strong><span>、</span><strong><span>彗星划向宫水神社</span></strong><span>、</span><strong><span>泷再次遗忘名字</span></strong><span>时，音乐点燃的紧张与心碎，将情绪推至燃烧的顶点；</span></p><p><span>也是</span><strong><span>三叶与泷在疾行的电车上交错而过</span></strong><span>，又在东京的街道中彼此追寻时，那旋律里交织的救赎感与挥之不去的淡淡感伤。</span></p><p><span>音乐不只是背景，它是另一个叙事者，是情绪的容器，是记忆的坐标。</span></p><p>&nbsp;</p><h3 id='7undead------mad'><span>7.Undead——MAD</span></h3><p><span>制作者：负负</span></p><h4 id='歌曲简介-7'><span>歌曲简介</span></h4><p><img src="images/17.png" alt="Logo"></p><p><span>《UNDEAD》是动画《物语系列 Off ＆ Monster Season》的主题曲，由YOASOBI演唱，于2024年7月1日先行公开。YOASOBI始终实践着“将小说、漫画音乐化”的独特理念。他们旨在以小说作为歌曲的创作原型，在其基础上进行改编创作，将小说变成可以听的音乐。《UNDEAD》改编自由日本网络动画片《物语系列 Off&amp;Monster Season》原作者西尾维新撰写的短篇小说《なでこパスト》和《しのぶフューチャー》。</span></p><h4 id='乐队简介-5'><span>乐队简介</span></h4><p><img src="images/18.png" alt="Logo"></p><p><span>YOASOBI（夜游）是VOCALOID职人Ayase与创作歌手ikura（幾田りら）于2019年成立的双人音乐组合。代表作有《夜に駆ける》《群青》《ハルジオン》等。其还演唱了以下ACG歌曲：</span></p><ul><li><p><span>《怪物》—— 《BEASTARS》第二季op</span></p></li><li><p><span>《アイドル》——《我推的孩子》第一季op</span></p></li><li><p><span>《勇者》——《葬送掉芙丽莲》op1</span></p></li><li><p><span>《祝福》—— 《机动战士高达：水星的魔女》op</span></p></li></ul><h4 id='个人向点评-7'><span>个人向点评</span></h4><p><span>这首歌曲的演出现场表现力极为出色，灯光设计与主唱Ikura极具爆发力的嗓音相得益彰，即便是略显突兀的开场段落，也成功将观众的情绪层层推进至顶点，最终带来酣畅淋漓的释放感。</span></p><p><span>歌曲中英文与日文交织的双语说唱段落尤为亮眼，既展现了Ikura在多种语言演唱上的驾驭能力，也通过富有电子感的声效处理，营造出如同虚拟歌姬般独特的声音质感。从音乐表现与现场反响来看，这首作品堪称YOASOBI在2024年最具代表性的单曲之一。</span></p><p><span>至于歌曲与动画作品的适配程度，则属于见仁见智的范畴(。</span></p><p>&nbsp;</p><h3 id='8時を刻む唄铭刻时间之歌------钢琴'><span>8.時を刻む唄（铭刻时间之歌）——钢琴</span></h3><p><span>演出者：小p</span></p><h4 id='歌曲简介-8'><span>歌曲简介</span></h4><p><img src="images/19.png" alt="Logo"></p><p><span>《時を刻む唄》是2008年动画《CLANNAD ～AFTER STORY～》的片头曲，后收录2008年11月14日发售的日本歌手Lia的第8张单曲《時を刻む唄/TORCH》。</span></p><p><span>标题中的“時を刻む”是一种强调时间流逝的表达（時刻が進みゆくことを強調した表現），因此曲名也可以理解为“时间流逝的歌”。“刻む”除了有“雕刻”、“铭刻”的意思外，在以“時”为宾语时意为“（时间）逝去”。原型为纯钢琴曲《同じ高みへ》。</span></p><h4 id='歌手简介-2'><span>歌手简介</span></h4><p><span>Lia（リア）是日本出身的女性歌手，1984年12月20日出生，所属的唱片公司是queens label、所属的事务所为1st Place。</span></p><p><span>以大写的LIA名义在快乐硬核（Happy hardcore）领域活动，同时是IA的声源（亲妈）。</span></p><p><span>Lia于15岁赴美深造。后凭借在</span></p><ul><li><p><span>Galgame&amp;TV&amp;剧场版动画「AIR」主题曲「鳥の詩」中压倒性的唱功与通透的声线获得「水晶之声的歌姬」的美誉。（二次元国歌）</span></p></li></ul><p><span>在那之后开始演唱各种人气动画和游戏的歌曲。如（显然，她是key社早期动画的御用歌姬）</span></p><ul><li><p><span>TV动画「CLANNAD AFTER STORY」op《TORCH》</span></p></li><li><p><span>TV动画「FORTUNE ARTERIAL 赤い約束」op《絆-kizunairo-色》</span></p></li><li><p><span>TV动画「Angel Beats!」op「My Soul, Your Beats!」</span></p></li></ul><h4 id='个人向点评-8'><span>个人向点评</span></h4><p><strong><span>Call life as natality, noticing, accompanying, death.</span></strong>
+<strong><span>人生，即是到来，相遇，陪伴，离开。</span></strong></p><p><span>初听这首歌，便感受到一股挥之不去的忧伤。直到深入了解了After Story的剧情，才真正体会到每一句歌词背后所承载的情感与重量。</span></p><blockquote><p><span>“どれだけの悲しみと出会うことになっても</span>
+<span>无论在今后 将会邂逅多少悲伤</span>
+<span>见せてやる 本当は強かったときのこと</span>
+<span>为了让你看见 我曾经坚强的模样</span>
+<span>さあいくよ 歩き出す 坂の道を</span>
+<span>我愿迈步前行 走在孤独的坡道上”</span></p></blockquote><p><span>对于经历过After Story第16话那段故事的观众来说，这首歌就是渚离开后，从朋也视角发出的内心独白。它不再仅仅是一首插曲，而是一个失去挚爱之人，在回忆与现实间徘徊的低语与誓言。</span></p><p><span>歌中唱到的“坡道”，早已超越了具体的场景。它象征着人生中必须独自攀爬的陡坡，是带着与你的回忆、背负着对你的承诺，在失去你之后依然要继续前行的漫漫长路。而那句“为了让你看见，我曾经坚强的模样”，也超越了普通的情话——这是对逝去之人的郑重回应，是穿越生死的温柔对话，更是在悲伤中继续生活的勇气证明。</span></p><p><span>这首歌之所以如此打动人心，正是因为它如此真实地诉说着关于失去、记忆与前行的生命体验。</span></p><p>&nbsp;</p><h3 id='9snow-halation雪色光晕------乐团'><span>9.Snow halation(雪色光晕)——乐团</span></h3><p><span>演出者：辉梦ACG乐团</span></p><h4 id='歌曲简介-9'><span>歌曲简介</span></h4><p><img src="images/20.png" alt="Logo"></p><p><span>Snow halation是μ&#39;s的第二张单曲《Snow halation》收录的同名歌曲。该单曲于2010年12月22日发售。</span></p><p><span>本曲也在《LoveLive!》电视动画第二季第9集中作插入曲。</span></p><p><span>Center位是在2010年8月举行的Love Live! School idol project第一次总选举（いきなり真夏の総選挙）中胜出的高坂穗乃果，舞蹈的站位也是根据选举的名次设计的。相对于其他单曲，Snow halation抒情缓慢，一直是演唱会的压轴曲目（从1st开始就是了）。</span></p><p><span>虽然一直被粉丝们奉为神曲，可有谁能想到当时二单记录销量只有1023张。后在2019年由索尼音乐举办的“平成动画歌曲大赏”中获得2010-2019年代的特别赏。</span></p><h4 id='lovelive简介'><span>LoveLive!简介</span></h4><p><img src="images/21.png" alt="Logo"></p><p><span>LoveLive!（日语：ラブライブ！），全称LoveLive! School idol project（日语：ラブライブ！ School idol project），是由日本动画公司日昇、唱片公司Lantis，以及ACG月刊杂志《电击G&#39;s magazine》在2010年共同合作推出的读者参与型混合媒体校园偶像企划，企划包括音乐作品、电视和广播节目、文字书籍、 漫画插画 、动画 、游戏、周边等。 作品的口号是大家一起实现梦想的故事（日语：みんなで叶える物語；英语：Make Our Dream Come True!）。</span></p><h4 id='𝜇--𝑠-简介'><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.053ex" height="2.206ex" role="img" focusable="false" viewBox="0 -759 1349.5 975" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.489ex;"><defs><path id="MJX-10-TEX-I-1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path><path id="MJX-10-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-10-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D707" xlink:href="#MJX-10-TEX-I-1D707"></use></g><g data-mml-node="mo" transform="translate(636,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-10-TEX-V-2032"></use></g></g><g data-mml-node="mi" transform="translate(880.5,0)"><use data-c="1D460" xlink:href="#MJX-10-TEX-I-1D460"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>μ</mi><mo data-mjx-alternate="1">′</mo></msup><mi>s</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mu's</script><span>简介</span></h4><p><img src="images/22.png" alt="Logo"></p><p><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.053ex" height="2.206ex" role="img" focusable="false" viewBox="0 -759 1349.5 975" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.489ex;"><defs><path id="MJX-10-TEX-I-1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path><path id="MJX-10-TEX-V-2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path><path id="MJX-10-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D707" xlink:href="#MJX-10-TEX-I-1D707"></use></g><g data-mml-node="mo" transform="translate(636,363) scale(0.707)"><use data-c="2032" xlink:href="#MJX-10-TEX-V-2032"></use></g></g><g data-mml-node="mi" transform="translate(880.5,0)"><use data-c="1D460" xlink:href="#MJX-10-TEX-I-1D460"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>μ</mi><mo data-mjx-alternate="1">′</mo></msup><mi>s</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">\mu's</script><span>是企划《LoveLive!》及其衍生作品中登场的学园偶像团体。在三次元中有由饰演她们的声优组成的同名偶像团体。</span></p><p><span>在2010年7月号(2010年5月29日)的电击G’s magazine上刊载了企划预告，宣传语为“</span><strong><span>みんなで叶える新しい物語</span></strong><span>”，在8月号(2010年6月30日)和9月号的杂志上公布了官方人物设定和官方网站。</span></p><p><span>声优们在各种放送活动中不断成长，也不断地积累人气。在2012年2月19日，第一次的演唱会 LoveLive! μ&#39;s First LoveLive!在横滨BLITZ正式举行，当日同时公布决定电视动画化。</span></p><p><span>μ&#39;s的首次演唱会令LoveLive!企划名气飙升，并于2012年首次登上了Animelo Summer Live的舞台。2013年，随着电视动画第一期的热播和手机游戏《LoveLive!学园偶像祭》的推出，企划人气急剧上升，音乐销量也实现了爆炸性增长，其第六张单曲的首周销量达到了首张单曲的80倍。</span></p><p><span>2014年播出的电视动画第二季势头更猛，其BD首周销量打破了当时日本电视动画的历史纪录。同年，μ&#39;s的CD销量占据了唱片公司Lantis的半壁江山，并宣布了制作全新剧场版的消息。2015年是μ&#39;s荣誉满载的一年，不仅专辑首次夺得Oricon周榜冠军，更作为首个二次元企划组合登上了日本最高级别的歌唱盛典——NHK红白歌会的舞台。</span></p><p><span>2016年3月31日至4月1日，μ&#39;s在东京巨蛋举行了盛大的《μ&#39;s Final LoveLive! ～μ’sic Forever♪♪♪♪♪♪♪♪♪～》演唱会，随后其公开演出活动暂告一段落，标志着一段传奇的圆满落幕。</span></p><h4 id='特殊应援方式'><span>特殊应援方式</span></h4><p><img src="images/22.5.webp" alt="Logo" style="zoom:33%;" /></p><p><span>《Snow halation》的现场应援，早已被公认为LoveLive文化中最具标志性的仪式之一。这首歌不仅是LLer心中的圣曲，更成为了一种信仰的具象表达。</span></p><p><span>演出前段，全场观众会以银白色的光海呼应歌词中飘落的雪花，各大弹幕网站的录播画面上，也会飘过层层叠叠的雪花弹幕，仿佛整个空间都沉浸在冬日静谧的氛围之中。</span></p><p><span>而当歌曲推进至最动人的高潮——第三段副歌响起，高坂穗乃果唱出那句“届けて　切なさには”的瞬间，整个舞台的背景会蓦然转为她的代表色：橙色。</span></p><p><span>也在同一时刻，弹幕中会齐齐涌现出那句刻进无数人DNA中的话语：“如果奇迹有颜色，那一定是橙色。”</span></p><p><span>这一切并非官方策划，而是源自粉丝们自发的默契。正因如此，现场导播的镜头并不总能精准捕捉到全场由银白转为橙海的那个震撼瞬间。在许多LLer心中，最完美的一次转场，永远定格在2014年Animelo Summer Live的舞台上——那一次，镜头与歌声、灯光与呐喊，完成了一场近乎神迹的共鸣。</span></p><p><img src="images/23.png" alt="Logo" style="zoom:33%;" /></p><p><span>(2014的ASL有一个关于Snow Halation的故事。一位勇士在未知μ&#39;s是否会唱SH的情况下免费向观众发放UO（高亮度橙色化学荧光棒），为的是让观众们用心一起重现那转色的一幕。最终实现了奇迹。)</span></p><p><img src="images/23.5.webp" alt="Logo" style="zoom: 67%;" /></p><p>&nbsp;</p><h4 id='个人向点评-9'><span>个人向点评</span></h4><p><span>《Snow halation》作为μ‘s的第二张单曲，本是一首描绘初恋苦涩的情歌。然而，在无数LLer的热爱与共创之下，它早已超越了原本的意境，成为了整个LoveLive!企划最具代表性的精神象征。</span></p><p><span>正如作词人畑亚贵所言：“她们并不是为了想要恋人而努力的。觉得果然还是以‘苦闷之感’作为主题比较好吧。”连她自己也未曾预料，这首歌会在2.5次元文化中占据如此重要的地位。她感慨道：“正因为看到了我们完全没预想到的现场氛围，才深刻感受到——演出，果然是与观众共同完成的啊。”</span></p><p><span>《リスアニ！音乐大全》中这样评价：“山田高弘的作曲在前作基础上实现了风格的蜕变，将紧张与苦闷的情绪融入钢琴与弦乐交织的旋律中，迸发出令人心潮澎湃的感染力。那即便痛苦也依然直面前方的歌声，令人百感交集，堪称绝品。”</span></p><p><span>如今，不仅LoveLive!的后辈团体频频致敬这首经典，许多2.5次元的从业者也反复演绎着它。更有不少声优坦言，正是因为受到μ‘s的影响，才走上了演艺之路——她们正是这个企划播撒下的“儿时梦想”的种子。</span></p><p><span>从一首苦情恋歌，到跨越时代的文化符号，《Snow halation》已然成为2.5次元文化与ACG音乐史上不可磨灭的里程碑。它告诉我们：有些光芒，始于雪色，却终于奇迹。</span></p><h4 id='创作者简介'><span>创作者简介</span></h4><p><span>畑亚贵：缪斯与水团全部单曲的词作者。</span></p><p><span>除了LoveLive，畑亚贵参与的代表企划还有《凉宫春日》系列以及《幸运星》系列。在平成动画歌曲大奖的评选中，畑亚贵入选歌曲简直是把我们熟悉的Anisong都包揽了个遍：</span></p><ul><li><p><span>《もってけ!セーラーふく》——幸运星op</span></p></li><li><p><span>《God knows…》——凉宫春日插曲</span></p></li><li><p><span>《ハレ晴レユカイ》_凉宫春日ed</span></p></li><li><p><span>《太陽曰く燃えよカオス》——奈亚子op</span></p></li><li><p><span>《Daydream café》——点兔op</span></p></li><li><p><span>《Snow halation》</span></p></li><li><p><span>《僕たちはひとつの光》——《LoveLive!学园偶像电影》插曲</span></p></li></ul><p><span>（以上歌单来自b站up主razorbiology专栏）</span></p><p>&nbsp;</p><h3 id='10起こそうキセキを即将发生的奇迹------乐团'><span>10.起こそうキセキを！（即将发生的奇迹）——乐团</span></h3><p><span>演出者：辉梦ACG乐团</span></p><h4 id='歌曲简介-10'><span>歌曲简介</span></h4><p><img src="images/24.png" alt="Logo"></p><p><span>加藤达也指挥的浦之星交响乐团在Aqours专场演唱会《LoveLive!Sunshine!! Aqours 4th LoveLive! ～Sailing to the Sunshine～》Day2演奏的交响乐曲目，后续整场演出被封入演唱会蓝光纪念碟片《 ラブライブ！サンシャイン!! Aqours 4th LoveLive! ～Sailing to the Sunshine～ Blu-ray Day2》中。</span></p><h4 id='aqours简介'><span>Aqours简介</span></h4><p><img src="images/25.png" alt="Logo" style="zoom:40%;" /></p><p><strong><span>Aqours</span></strong><span>是企划《LoveLive!Sunshine!!》及其衍生作品中登场的学园偶像团体。在三次元中有由饰演她们的声优组成的同名偶像团体。企划的特色，是为角色配音的各位声优]，同样以Aqours的名义展开各类偶像活动，包括电视广播节目、不定期直播以及演唱会等。</span></p><p><span>Aqours（音：アクア）是由浦之星女学院的9位学生少女为阻止废校，也为了实现自身的闪耀，结成的学园偶像团体。名称由“aqua”和“ours”两个部分组成，含义分别为“水”与“我们”。因此被汉语使用者粉丝称为“水团”、“水水”。</span></p><p><span>同时，企划与故事舞台静冈县沼津市展开各种形式的联动，LoveLive!Sunshine!!和Aqours的身影在沼津随处可见。</span></p><p><img src="images/25.5.htm" alt="Logo" style="zoom:40%;" /></p><p><span>2025年6月，最终专场演唱会</span><strong><span>LoveLive!Sunshine!! Aqours Finale LoveLive! ～永久stage～</span></strong><span>在Belluna巨蛋（西武巨蛋）举行。至此，日本二偶世界（曾经）最高的山结束了自己的9年征程，以后再无9人齐聚的水水。</span></p><p><img src="images/26.png" alt="Logo" style="zoom:25%;" /></p><p><span>此外，日前在全世界各大短视频网站爆火的片段「Ruby Chan Hai～～」「Nani ga suki？」出自LoveLive!系列中首个跨企划、跨组合的限时特别小队AiScReam（并非限时，这“临时”小组已经确定要参加今年年底的第76回红白歌会），成员包括黑泽露比、上原步梦、若菜四季，分别来自自Aqours、虹咲学园学园偶像同好会和Liella!。组合名称“AiScReam”谐音“ice cream”，同时取三位成员名字步梦（Ayumu）、四季（Shiki）、露比（Ruby）的罗马字首字母组合而成，同时包含「三名角色都有自己喜欢的人，所以要喊（scream）出心中的爱（ai）」的寓意。（请关注我们降燔爱、大西亚玖璃和大熊和奏！）</span></p><h4 id='指挥简介'><span>指挥简介</span></h4><p><span>加藤达也，作曲家。毕业于东京音乐大学音学部，师从三枝成彰、服部克久、小六礼次郎、羽田健太郎。有为「LoveLive!Sunshine!!」TV动画剧场版、TV动画「Free！」系列、TV动画「偶像梦幻祭」、TV动画「IDOLiSH7」等众多人气作品制作剧中音乐。深谙管弦乐，也曾于Live舞台上指挥管弦乐团。</span></p><h4 id='个人向点评-10'><span>个人向点评</span></h4><p><img src="images/27.png" alt="Logo" style="zoom:30%;" /></p><p><span>“4th”──那大概是水团第一次踏上东京巨蛋的时刻吧。记得那时，企划里还弥漫着无声的禁令，后辈不能轻易提起缪斯的名字，连她们的身影也仿佛成了某种禁忌。那是分裂与争执充斥的年代，粉丝之间划开看不见的界线。而那一场演出，却仿佛一道冲破阴霾的光，被许多人看作水团真正站稳脚跟的里程碑——她们终于追上了前辈曾抵达的高度，像是接过了一束沉重的光。</span></p><p><span>那一夜，不只是对过去的告别，也是对未来的宣誓。光阴流转，如今缪斯与水团都已落下“最终演出”的帷幕。偶尔翻看网络上残留的激烈争论、那些曾经代表立场与敌意的字句，只觉得恍如隔世。一个时代，原来真的可以这样安静地结束。</span></p><p><span>而昨天，我又在推特上看到，沼津那家充满回忆的汉堡店，也即将停业。</span>
+<span>那一刻，胸口泛起一阵无声的心酸。仿佛连曾经承载欢笑的地方，也一点一点随风散去。</span></p><p><span>所以啊，如果你现在还喜欢着某个偶像，还追逐着某个企划，还为一首歌、一场演出而热泪盈眶——请不要再把时间浪费在资历的比较、无休的辩经之上。别再让热情消耗于纷争的荒原。</span></p><p><span>舞台上的她们，正闪闪发光。</span>
+<span>而那样的光，值得你放下所有杂念，纯粹地、用力地，看进眼里，存进心底。</span></p><p>&nbsp;</p><h3 id='11starlight-prologue星光序曲------乐团'><span>11.Starlight Prologue(星光序曲)——乐团</span></h3><p><span>演出者：辉梦ACG乐团</span></p><h4 id='歌曲简介-11'><span>歌曲简介</span></h4><p><img src="images/28.png" alt="Logo" style="zoom:40%;" /></p><p><span>Starlight Prologue是《LoveLive!Superstar!!》电视动画第12集的插曲，由Liella!演唱，收录于动画第三张插入曲单曲《ノンフィクション!!/Starlight Prologue》中。该单曲于2021年10月20日发售。</span></p><p><span>本曲和Snow halation一样有冬日、雪花的元素，而且单曲第12话盘的封面构图与一单相似。是动画第一季最后一集的总结性的一曲。</span></p><p><span>在Liella! First LoveLive! Tour ～Starlines～上，首次完成了由观众自主应援的5色光路。</span></p><p><span>在Liella! 5th LoveLive! ～Twinkle Triangle～上，由11人的Liella!演唱。</span></p><p><span>在LoveLive! Series Asia Tour 2024 ～伴你圆梦～广州公演中，首次完成了由观众自主应援的11色光路。</span></p><h4 id='星团简介'><span>星团简介</span></h4><p><img src="images/29.png" alt="Logo"></p><p><span>LoveLive!Superstar!!（日语：ラブライブ！スーパースター!!）是2020年1月公布的LoveLive!系列的学园偶像企划。</span></p><p><span>2020年1月28日，在官网公布新系列企划的始动，公开招募一名主役声优，并宣布将会制作电视动画。随后半年内，在官网和杂志上进行多项读者投票企划并陆续公开企划的设定。7月14日，官方正式公布新系列企划标题为“LoveLive!Superstar!!”（ラブライブ！スーパースター!!）9月16日，公布组合名称为“Liella!”（リエラ）。12月14日，公布组合各成员的声优。2021年1月30日举行首次Liella!生放送，声优首次公开亮相。</span></p><p><span>2021年7月开始播放《LoveLive!Superstar!!》第一季动画。</span></p><p><strong><span>二期生加入</span></strong>
+<span>2022年4月28日，官方宣布结丘女高进入新学期，原五名成员成为二年级生，四名新一年级生成员作为二期生加入Liella!。</span></p><p><span>2022年7月开始播放《LoveLive!Superstar!!》第二季动画。</span></p><p><strong><span>三期生加入</span></strong>
+<span>Liella! 3rd Live最后一场演出结束后，官方宣布在2023年4月28日公布Liella!新一年级生，也就是三期生。</span></p><p><span>2024年10月开始播放《LoveLive!Superstar!!》第三季动画。</span></p><h4 id='个人向点评-11'><span>个人向点评</span></h4><p><img src="images/31.png" alt="Logo" style="zoom:50%;" /></p><p><span>作为一名从LoveLive新企划“星团”公布之日起便追随至今的粉丝，《星光序曲》对我而言，不只是一首歌——它是在2021年10月，为我那段追逐“星一”的岁月画上的句点。也许不算完美，却充满值得反复回味的余韵。</span></p><p><span>从最初得知角色中有中国人开始，这个企划就牵动了我的心。一单《起始是你的天空》带来的震撼至今难忘：中之人与角色之间那份难得的契合，MV中倾注的诚意与巧思，都让我对这个组合产生了强烈的期待。而同一张单曲中的《我的Symphony》，更以明快的节奏与直击心灵的梦想歌词，深深打动了我。第一季动画中涩谷香音演唱的抒情版本，更是“毒性”十足，至今仍是我循环列表中的常客，每一次聆听，都仿佛能重回那个充满可能的开端。</span></p><p><span>然而，也正是这首歌，在动画第一季结尾被赋予了“败北”的剧情。自那一刻起，我便深深觉得，花田此人，绝非善类——他所参与的作品，值得我们带上警惕去观看。这种刻意安排的“剧情杀”，与歌曲本身制作的精良、意象上与《Snow Halation》的遥相呼应形成了尖锐对比。粉丝对动画的不满在第一季完结时达到高潮：我们对MV有多满意，就对剧情的不公有多不甘。</span></p><p><span>星团的故事，确实走成了一条高开低低的线。从早期巡演中主唱嗓音的意外受损，到突如其来的加人风波，再到部分成员唱功引发的争议（你一定也听过那句出圈的“打卡啦摩托”）……运营的种种失误，让人难以回避内心的失望。</span></p><p><span>但，一个由音乐开始的故事，终究也要靠音乐来救赎。广州公演中，那条由观众自发完成的“11色光路”，像一道无声的誓言，为国内星团粉丝注入了久违的勇气。不同时期入坑的粉丝之间，裂痕在光芒中弥合；大家对11人星团的未来，又重新燃起了点点星光。</span></p><p><span>如今，星团即将迎来7th巡演。我不再是当初那个初入“二偶”世界的新人，却仍愿用最初那首《星光序曲》的歌词，献上我最真诚的祝愿：</span></p><blockquote><p><span>“キラキラ大空に舞い散る夢 かき集めて</span>
+<span>(合)在闪耀的天空中飞舞的点点梦想 收集起来吧</span>
+<span>ひとつひとつ 叶えてゆこう</span>
+<span>然后一个又一个去实现吧”</span></p></blockquote><p>&nbsp;</p><h3 id='12startdash------乐团'><span>12.START:DASH!!——乐团</span></h3><p><span>演出者：辉梦ACG乐团</span></p><h4 id='歌曲简介-12'><span>歌曲简介</span></h4><p><img src="images/start.png" alt="Logo"></p><p><span>「START:DASH!!」是《LoveLive!》TV动画第一季中的插曲。作为动画中μ&#39;s的起点，是一首有重要意义的歌。在电视节目“大家最爱的动漫歌曲 LoveLive! μ&#39;s篇”于2020年11月对1万位LoveLiver进行的投票“不经意间就想要唱出来！LoveLive! μ&#39;s名曲排名”中获得第5名。九人于该学期最后，以μ&#39;s身份回归演唱（第一季第十三集）。</span></p><p><span>此曲主要有3个版本，九人的solo版（真姬的钢琴版除外）收录于《ラブライブ！Solo Live! collection Memorial BOX Ⅱ》。三人版收录于动画第1季插入曲单曲第1弹《ススメ→トゥモロウ／START:DASH!!》，九人版收录于动画第1季插入曲单曲第3弹《No brand girls／START:DASH!!》，真姬的钢琴版收录于动画第1季原声带OST《Notes of School idol days》。9人版还是《LoveLive!Sunshine!!》第一季动画第1集的插曲。</span></p><h4 id='总有一天我要让这里座无虚席'><span>“总有一天，我要让这里座无虚席”</span></h4><p><span>（可惜台上已空无一人）</span></p><p><span>这里蕴含的情感已经无法用言语去形容，请自行跳转缪斯的final live《μ&#39;s Final LoveLive!～μ&#39;sic Forever♪♪♪♪♪♪♪♪♪～》day1和day2后的一安部分，欣赏这由完整9人最后带来的《Start:dash!!》.</span></p><h2 id='下半场'><span>下半场</span></h2><h3 id='13誰にもなれない私だから正因为是无法成为他人的我------乐队cover'><span>13.誰にもなれない私だから（正因为是无法成为他人的我）——乐队cover</span></h3><p><span>演出者：夜迷MyYoru</span></p><h4 id='歌曲简介-13'><span>歌曲简介</span></h4><p><img src="images/32.png" alt="Logo" style="zoom:33%;" /></p><p><span>《誰にもなれない私だから》是企划GIRLS BAND CRY中组合TOGENASHI TOGEARI （别名无刺有刺、刺团）7th单曲《誰にもなれない私だから》的主打曲，也是TV动画的片尾曲。单曲于2024年5月22日发售。7th收录曲目有：</span></p><ul><li><p><span>TV动画《GIRLS BAND CRY》的片尾曲《誰にもなれない私だから》及对应伴奏。</span></p></li><li><p><span>TV动画《GIRLS BAND CRY》的插曲《声なき魚》及对应伴奏。</span></p></li><li><p><span>TV动画《GIRLS BAND CRY》第1话的插曲《空の箱 (第1话弹き语り) 》</span></p></li></ul><h4 id='企划简介'><span>企划简介</span></h4><p><img src="images/33.png" alt="Logo"></p><p><span>《GIRLS BAND CRY》，简称gbc或少哭，是由东映动画、agehasprings和环球音乐联合策划制作的一部原创动画，以及衍生跨媒体企划。2024年9月13日，宣布剧场版总集篇制作决定，前篇「青春狂走曲」于2025年10月3日上映，后篇「呐，未来」于2025年11月4日上映。2025年9月23日，宣布完全新作电影制作决定。</span></p><p><span>TOGENASHI TOGEARI是《GIRLS BAND CRY》及其衍生作品的登场乐队，简称“有刺无刺”或“刺团”，以及企划下的真实女子乐队。在TV动画中，该乐队的前身为新川崎（仮）和beni-shouga（红生姜）。现实中刺团于2025年9月23日首次登上日本武道馆进行演出。遗憾的是从2024年7月至今，刺团仍有两人（美怜和凪都）因为体调不良无法参演live，武道馆live仍然属于未集结完毕的状态。</span></p><h4 id='个人向点评-12'><span>个人向点评</span></h4><p><span>这首歌总让人想起2024年的春天——那个属于迷茫与重生的季节。</span></p><p><span>我们看见MMK在解散与重组间的挣扎，也看见仁菜面对过往时毫不妥协的坚定。她们的故事，像两面相对的镜子，照出了每个年轻人必经的命题：如何在成长中认识自己，又如何坦然接受自己与他人的不同。</span></p><p><span>“不会成为任何人的我，要挺起胸膛”——理名的呐喊撕裂了循规蹈矩的日常。在这个万事求快的时代，这句歌词像一记重锤，敲醒了被困在评价体系中的我们。音乐在此刻成为一面最诚实的镜子，让我们得以短暂地凝视：剥离了所有外界期待后，我究竟是谁？</span></p><p><span>或许每个人都该像这样活着：先找到自己真正热爱的事物，再选择那条哪怕日后热情褪去，也能坦然说出“我不后悔”的道路。</span></p><p><span>因为青春不是模板，不是赛道，而是独一无二的、只属于你自己的声音。</span></p><p>&nbsp;</p><h3 id='14猛独が襲うmygover猛独侵袭------乐队cover'><span>14.猛独が襲う（Mygo!!!!!ver.）（猛独侵袭）——乐队cover</span></h3><p><span>演出者：夜迷MyYoru</span></p><h4 id='歌曲简介-14'><span>歌曲简介</span></h4><p><img src="images/34.png" alt="Logo"></p><p><span>《猛独が襲う》是p主一二三于2017年6月13日投稿至niconico动画的作品，后于同年7月19日发布于YouTube。是一二三第十部作品，也是他的第一首殿堂曲及传说曲。</span></p><p><span>由跨媒体企划《BanG Dream！》中组合Mygo!!!!翻唱的版本于2022年7月16日投稿至YouTube，并于同日投稿至bilibili。 为了适应乐队演奏进行了重新编曲</span></p><h4 id='p主介绍'><span>p主介绍</span></h4><p><img src="images/35.png" alt="Logo"></p><p><em><span>*一二三</span></em><span>umi）是活跃在niconico和YouTube上的日本VOCALOID职人，代表作</span></p><ul><li><p><span>《猛独が襲う》</span></p></li><li><p><span>《花が落ちたので》（正因花已凋零）</span></p></li></ul><p><span>主要使用的VOCALOID虚拟歌姬为初音未来和[音街鳗，部分歌曲有很明显的和风气息。值得注意的是，一二三也使用过CeVIO歌姬ROSE制作过歌曲</span></p><ul><li><p><span>《役にすがる》（面具依存）</span></p></li></ul><p><span>同时为原神中的角色胡桃写过角色曲（此曲为为B站限定投稿）</span></p><ul><li><p><span>《いってらっしゃい》（吃好喝好，一路走好）</span></p></li></ul><h4 id='个人向点评-13'><span>个人向点评</span></h4><p><img src="images/36.png" alt="Logo" style="zoom:60%;" /></p><p><span>随着《BanG Dream!It&#39;s Mygo!!!!!》于2023年在中国的爆火，这首由一二三早期创作的术曲也迎来了自己的第二春，无论是各种流媒体上的播放量的上升，还是线下Mygo!!!!!的不断演奏，亦或者各种同人live中的翻唱都再次展现了术力口本身的魅力。歌词本身也很好地反映了高松灯在退出c团后的心理状态以及对自己得到温暖后再次失去后孤独的呐喊。本曲也是早期官方以go团名义上传的翻唱歌曲之一。</span></p><p><span>此外由go团翻唱的术力口曲目还有：</span></p><ul><li><p><span>《二息歩行》（二息步行）——DECO*27</span></p></li><li><p><span>《君の神様になりたい》（想成为你的神明大人）——クロガキ（黑柿子）</span></p></li><li><p><span>《ノンブレス・オブリージュ》（无呼吸义务）——ピノキオピー（匹诺曹P）</span></p></li><li><p><span>《だれかの心臓になれたなら》（如果能成为谁的心脏的话）——ユリイ・カノン（尤里卡农）</span></p></li></ul><p><span>其中，《无呼吸义务》和《如果能成为谁的心脏的话》并没有在live上演奏过，其余均可直接通过搜索对应名字查找到演出视频。</span></p><p>&nbsp;</p><h3 id='15daydream-warrior白日梦勇士------宅舞'><span>15.Daydream Warrior（白日梦勇士）——宅舞</span></h3><p><span>演出者：努玛兹乡下女团</span></p><p><span>（tips：15号与16号歌曲在节目中被编排成了一首歌以供宅舞使用）</span></p><h4 id='歌曲简介-15'><span>歌曲简介</span></h4><p><img src="images/37.png" alt="Logo"></p><p><strong><span>Daydream Warrior</span></strong><span>是《LoveLive! Sunshine!!》BD第4卷的特典曲目，由Aqours演唱，发售于2016年12月22日。</span></p><h4 id='个人向点评-14'><span>个人向点评</span></h4><p><span>由于本身是作为BD特典曲目发行，这首歌曲的初始关注度自然不及动画正片中的插入曲。然而，凭借其大胆的曲风编排与极具张力的电音运用，它依然成为水团曲库中表现力极强的一首——那段不断旋转的旋律段落更是被粉丝戏称为“风火轮”，现场演绎时极具爽感。</span></p><p><span>歌曲另一大记忆点在于合唱部分——樱内梨子的声线在尾声处格外突出，因此也衍生出“你逢田姐当然会唱尾音啊”这样的粉丝趣梗。</span></p><p><span>不仅如此，这首曲子在宅舞圈中也持续保持着热度。直至今日，我们仍能在各类随舞活动、舞台企划乃至Lovelive Only专场中，看到它的身影不断登场，成为连接不同时期观众的共同记忆。</span></p><p>&nbsp;</p><h3 id='16aqours-pirates-desire海盗aqours的野心------宅舞'><span>16.Aqours Pirates Desire（海盗Aqours的野心）——宅舞</span></h3><p><span>演出者：努玛兹乡下女团</span></p><h4 id='歌曲简介-16'><span>歌曲简介</span></h4><p><img src="images/38.png" alt="Logo"></p><p><span>Aqours Pirates Desire是Aqours的专场演唱会Aqours 6th LoveLive! DOME TOUR 2020的主题曲CD《Fantastic Departure!》的C/W曲，于2020年7月22日发售。Love Live! Sunshine!! Aqours 6th LoveLive! 巨蛋巡回主题曲CD收录曲。描写海盗追寻财富，具有不同于过往Aqours的冒险要素的歌曲。</span></p><h4 id='个人向点评-15'><span>个人向点评</span></h4><p><span>受客观因素影响，水团原定的6th巨蛋巡回演出（含直播场次）全部取消。直至后续宣布另行举办&quot;Aqours 6th LoveLive!&quot;，这首作品才在发布近20个月后，终于迎来舞台首演。</span></p><p><span>在这场迟来的演出中，有一个成员手持旗帜挥舞的环节。其中，饰演渡边曜的齐藤朱夏所执的旗子尺寸尤为醒目——旗面甚至比人还高，在她充满活力的挥舞下，成为舞台上最抢眼的焦点之一。</span></p><p><span>也因其旋律抓耳、舞台表现力强，这首歌迅速成为宅舞圈的热门选曲，至今仍在各类活动中频繁登场。</span></p><p>&nbsp;</p><h3 id='17fool-for-you------混剪'><span>17.fool for you——混剪</span></h3><p><span>制作者；鸭脖</span></p><h4 id='歌曲简介-17'><span>歌曲简介</span></h4><p><img src="images/39.png" alt="Logo" style="zoom: 50%;" /></p><p><span>《Fool for You》是英国歌手ZAYN Malik演唱的英语歌曲，收录于其个人专辑《Mind of Mine》中，歌曲时长为3分22秒。</span></p><p><span>本曲较多出现在混剪视频中，由于其独有的节奏和电音使得卡点释放动画画面变得十分合适。</span></p><p>&nbsp;</p><h3 id='18花の塔花之塔------乐队cover'><span>18.花の塔（花之塔）——乐队cover</span></h3><p><span>演出者：你为什么这么熟练啊</span></p><h4 id='歌曲简介-18'><span>歌曲简介</span></h4><p><img src="images/40.png" alt="Logo"></p><p><span>《</span><strong><span>花の塔</span></strong><span>》是电视动画《莉可丽丝》的ED，由さユり演唱，于2022年7月3日先行配信。收录于さユり第2张专辑《酸欠少女》，发售于2022年8月10日。</span></p><p><span>“最适合花の塔的一集（最适合花之塔的一集）”是指大量动画二创作品中将《花之塔》片头前奏插入其他动画作品结尾画面的衍生梗，因为本歌具有百搭性，前奏可以与任何作品的结尾完美匹配，故成为流行梗。</span></p><p><span>这类二创作品的特点是，在视频的情节看似即将走向结尾时突然插入《花之塔》节奏性极强的电吉他前奏作为片尾的引出，借此突显视频情节转折的突然性，并强化转折带给观众的印象。</span></p><h4 id='歌手简介-3'><span>歌手简介</span></h4><p><img src="images/41.png" alt="Logo"></p><p><span>“在跟人说话时会紧张、脸红，有缺氧的感觉（缺氧=酸欠）”，这便是她名字的由来。出道前曾在日本的福冈、涩谷、东京、新宿等多地街头表演，蓝雨披、黄吉他、光脚丫是当时Sayuri深入人心的标志。出道后人气飙升，多首歌曲被选为动画的片头或片尾。</span></p><p><span>除《花之塔》和《ミカヅキ》以外，酸欠少女还献唱了以下ACG歌曲：</span></p><ul><li><p><span>《それは小さな光のような》（那如同微小的光芒一般）《只有我不存在的城市》ED（顺便一提的是，这部番的OP是由亚细亚功夫世代演奏的《Re:Re:》，其由纽带乐队的翻唱版被用作《孤独摇滚》剧场版的ED）</span></p></li><li><p><span>《平行線》（平行线）《人渣的本愿》ED</span></p></li><li><p><span>《月と花束》（月与花束）《Fate/EXTRA Last Encore》ED</span></p></li></ul><p><span>2024年，酸欠少女在中国大陆的多个地方进行巡演，这也是她最后的live。2024年9月27日，Sayuri的丈夫アマアラシ发布公告，称Sayuri已于9月20日去世，享年28岁。アマアラシ随后转发该条推文并表示Sayuri直到最后都在与慢性疾病作斗争。</span></p><p>&nbsp;</p><h3 id='19take-me-higher------乐队cover'><span>19.Take me higher——乐队cover</span></h3><p><span>演出者：你为什么这么熟练啊</span></p><h4 id='歌曲简介-19'><span>歌曲简介</span></h4><p><img src="images/42.png" alt="Logo" style="zoom:33%;" /></p><p>&nbsp;</p><p><span>《</span><strong><span>TAKE ME HIGHER</span></strong><span>》是日本组合</span><a href='https://zh.wikipedia.org/wiki/V6_(偶像團體)'><span>V6</span></a><span>于1996年9月16日发售的第4张单曲。1997年，原作者戴夫·罗杰斯进行过翻唱，并收录在1997年4月发售的专辑《take me higher》中，也收录了同年11月发行的SUPER EUROBEST的1997年版精选专辑《THE BEST OF SUPER EUROBEAT1997》中。Rodgers的自编版与V6的版本相比，欧洲节拍比较强，歌词的内容也大幅度不同。</span></p><h4 id='组合简介'><span>组合简介</span></h4><p><span>v6，是日本杰尼斯事务所旗下偶像，由队长坂本昌行、长野博、井之原快彦、森田刚、三宅健、冈田准一6名成员组成。</span></p><p><span>其还献唱了以下ACG歌曲：</span></p><ul><li><p><span>《CHANGE THE WORLD》——《犬夜叉》op</span></p></li><li><p><span>《Brand New World》——《犬夜叉》149-165集ed</span></p></li><li><p><span>《Super Powers》——《海贼王》op21</span></p></li></ul><hr /><p><span>此外，有很多ACG歌曲都叫Brand-new World：</span></p><ul><li><p><span>多媒体企划D4DJ下组合 Happy Around! 演唱的，被用作企划动画《D4DJ First Mix》第10话的插曲。</span></p></li><li><p><span>动画《学战都市Asterisk》op</span></p></li><li><p><span>fripSide二代演唱歌曲</span></p></li><li><p><span>游戏《Arcaea》收录曲</span></p></li></ul><p><span>以及：</span></p><ul><li><p><span>游戏《Project Sekai》三周年大版本更新所用名称</span></p></li></ul><hr /><p>&nbsp;</p><h3 id='20ミカヅキ新月------乐队'><span>20.ミカヅキ（新月）——乐队</span></h3><p><span>演出者：拼图</span></p><h4 id='歌曲简介-20'><span>歌曲简介</span></h4><p><img src="images/43.png" alt="Logo"></p><p><span>ミカヅキ是电视动画《乱步奇谭》的片尾曲，由さユり演唱。</span></p><h4 id='个人向点评-16'><span>个人向点评</span></h4><p><span>动画第五集结尾——当那位痛失爱女的父亲，一刀又一刀刺进仇人的身体，鲜血在静默中飞溅，镜头却只凝视着墙上昏黄摇曳的影子。就在那一刻，清澈而哀婉的女声如叹息般响起，与飘落的蝴蝶一同在血色之上盘旋、上升。</span></p><p><span>剧情的张力与音画的诗意在此刻完美交融，推向极致。我整个人怔在原地，脊背发麻，仿佛被一种无声的震撼贯穿。片尾曲响起许久，仍深陷其中，久久无法回神……</span></p><h4 id='再见了所有的花之塔'><span>再见了，所有的花之塔</span></h4><p><span>提起《花之塔》，你会想起什么？</span></p><p><span>是2022年那个夏天，《莉可丽丝》点燃的轻百合作浪潮？是那段令人过耳不忘的鲜明前奏，以及随之诞生的一系列网络热梗？还是那个并不完美、甚至让不少观众意难平的结局？</span></p><p><span>时过境迁，曾经轻快明媚的旋律，如今听来，却仿佛成了以乐景写哀情的注脚。</span></p><p><span>而这首歌的创作者——酸欠少女，这位将“乐队少女”一词活成现实的音乐人，她的人生本身就如一首倔强的诗。高中辍学，只身奔赴东京，只为追逐心中的音乐梦。她在街头演出，在一场个人Live中毅然告别昨天的自己。出道九年，她用近乎呐喊的嗓音，陪伴并打动了一代又一代的ACG爱好者。</span></p><p><span>当2025年BML的舞台上再次响起《花之塔》的旋律时，所有热爱ACG音乐的我们，心中涌起的会是怎样的情绪？是怀念的喜悦，还是物是人非的遗憾？或许，更多是对天妒英才的深深无力与叹息。</span></p><p><span>正如她在《来世で会おう》中所唱：</span></p><p><strong><span>“来生再会吧</span></strong>
+<strong><span>在重生之时</span></strong>
+<strong><span>崭新的未来一定等候着我们”</span></strong></p><p><span>再见，酸欠。愿你在另一个世界，继续放声歌唱。</span></p><p>&nbsp;</p><h3 id='21ウミユリ海底譚海百合海底潭------乐队cover'><span>21.ウミユリ海底譚（海百合海底潭）——乐队cover</span></h3><p><span>演出者：拼图</span></p><h4 id='歌曲简介-21'><span>歌曲简介</span></h4><p><img src="images/44.png" alt="Logo"></p><p><span>『ウミユリ海底譚』（中文：海百合海底谭）是n-buna于2014年02月24日投稿的VOCALOID原创曲。</span></p><p><span>该曲作为n-buna第十三作，也是投稿两周年纪念作，是n-buna第一首在周刊获得冠军的歌曲，也是在nico上n-buna目前再生最高的歌曲。</span></p><p><span>2015年3月24日15时38分达成传说，用时392日20小时33分。n-buna本人庆贺海百合海底谭和透明哀歌百万本家翻唱了此曲。</span></p><p><span>2017年3月9日，n-buna在推特上发布了重编曲版来庆祝miku日。</span></p><p><span>2023年12月20日21时03分达成神话，用时3586日01时58分。</span></p><p><span>本曲被收录于VOCALOID精选集『EXIT TUNES PRESENTS Vocalofantasy feat.初音ミク』中。也被收录于ナブナ的第一张专辑『花と水飴、最終電車』中。</span></p><p><span>此曲也被《Project Sekai》中的组合Leo/need翻唱过。</span></p><h4 id='p主简介'><span>p主简介</span></h4><p><img src="images/nbn.webp" alt="Logo" style="zoom:40%;" /></p><p><span>n-buna(ナブナ)是日本niconico动画上的VOCALOID职人、词曲作家。</span></p><p><span>n-buna的vocaloid曲目风格如同幻想与现实两者互相融合，在现实的题材中又带点奇幻风格，让人分不清两者界限并深陷其中，就像是浏览一个个充满新奇事物的新奇世界一样丰富。</span></p><p><span>2017年，与主唱suis（スイ）成立音乐组合「ヨルシカ」（夜鹿），在2017年6月28日正式发售首张迷你专『夏草が邪魔をする』。</span></p><p><span>2020年2月8日，由于乐队推特账号粉丝数超过其本人账号，再加上本人有随意按自己的想法作曲，并退居幕后的意愿，在发布一系列告别语后，删除其个人推特账号上的全部推文，随后将个人账号注销。</span></p><p><span>2025年7月3日，在个人Youtube账号上发布自唱新曲向日葵，歌曲推送文中提到其与妻子的往事，被听众解读为向大众公开结婚情况的作品。（你拿终于幸福了！）据n-buna自述，该自唱歌曲为纯个人性质、与ヨルシカ乐队并无关系；且妻子为“一直过着与音乐无关的生活”的普通人士。</span></p><h4 id='个人向点评-17'><span>个人向点评</span></h4><p><span>我似乎从未真正走出，那个由你的旋律所描绘的夏天。</span></p><p><span>我们和拧巴男的故事开始于某个盛夏，也终将在某个蝉鸣依旧的日子里，轻轻挥手告别。</span></p><p><span>“曾经沧海难为水，除却巫山不是云。”这句曾被拿作为创作灵感的古诗，如今却成了每一位深爱他音乐的人最真切的心声。他已寻得了自己的幸福，无论那个曾在夏日里挣扎的少年是否还会归来，我们都将怀着最深的祝福，将他的音乐永远珍藏。</span></p><p><span>因为那些音符，早已在我们心底刻下了无法抹去的痕迹与悸动。</span></p><p>&nbsp;</p><h3 id='22neo------翻唱'><span>22.NEO——翻唱</span></h3><p><span>演出者：金眠，QQQ，ENKI，宋西</span></p><h4 id='歌曲简介-22'><span>歌曲简介</span></h4><p><img src="images/45.png" alt="Logo"></p><p><span>《NEO》是じん于2023年10月1日投稿至niconico和YouTube的VOCALOID日文原创歌曲，由初音未来演唱。</span></p><p><span>本曲是为游戏《世界计划 彩色舞台 feat. 初音未来》所提供的三周年版本的主题曲。游戏收录了角色声优演唱版本，并作为三周年版本主题曲，于当地时间2023年9月30日追加。</span></p><h4 id='p主简介-2'><span>p主简介</span></h4><p><img src="images/46.png" alt="Logo"></p><p><span>Jin（日语：じん），又称自然の敵P，日本音乐家、小说家、脚本家，代表作为VOCALOID制作阳炎Project系列歌曲。曾经为1st Place所策划的IA Project的一员，现属于Virgin Music。主要使用的音源为初音未来与IA。代表作有：</span></p><ul><li><p><span>《新人類》（新人类）</span></p></li><li><p><span>《カゲロウデイズ》（阳炎眩乱）</span></p></li></ul><p><span>此外，Jin参与制作的曲目也有很多（是真的很多）：</span></p><ul><li><p><span>《アイヲウタエ》动画《猫物语（白）》和《倾物语》的ED1</span></p></li><li><p><span>《Rally Go Round》动画《伪恋》第二季op</span></p></li><li><p><span>《なかよしマーチ》《兽娘动物园》的角色歌</span></p></li><li><p><span>《Vital》动画《杀戮天使》op</span></p></li><li><p><span>《星をつなげて》动画《兽娘动物园2》ed1</span></p></li><li><p><span>《 Clover Days》跨媒体企划《偶像大师 MILLION LIVE!》原创曲目。</span></p></li><li><p><span>《T.A.O.》虚拟歌手洛天依日文第八首殿堂曲、第一首传说曲，中华地区VOCALOID虚拟歌手第十五首日语音源殿堂曲、第二首达成传说成就的日文原创歌曲。</span></p></li><li><p><span>《Into the blue’s》动画《聆听者》op</span></p></li><li><p><span>《Song of LISTENERS:side Goodbye》动画《聆听者》ed1</span></p></li><li><p><span>《Song of LISTENERS:side Hello》动画《聆听者》ed2</span></p></li><li><p><span>《ステラ》游戏《世界计划 彩色舞台 feat. 初音未来》组合Leo/need歌曲，作为其第一期活动（saki一箱箱活）供曲</span></p></li><li><p><span>《Newton》Hololive旗下虚拟YouTuber－星街彗星所演唱的原创歌曲。</span></p></li><li><p><span>《燦々》跨媒体企划 《BanG Dream!》Afterglow原创歌曲。</span></p></li><li><p><span>《おらくる》Hololive旗下虚拟YouTuber－天音彼方所演唱的原创歌曲。</span></p></li><li><p><span>《ひっひっふー》个人势Vtuber時雨羽衣Official演唱歌曲</span></p></li><li><p><span>《Worlders》动画电影《剧场版世界计划 崩坏的SEKAI与无法歌唱的MIKU》的片尾主题曲</span></p></li><li><p><span>《Star-mine》游戏《学园偶像大师》中原创歌曲。由花见梅、畑谷美铃、十濑那以 Begrazia 组合进行表演。</span></p></li><li><p><span>《Circle of Love》电影 《LoveLive! 虹咲学园学园偶像同好会 完结篇第二章 》插入曲（目前只有试听版本）</span></p></li></ul><p><span>设定上，Jin也翻唱过《Re:Re:》（如果你想不起来这是什么的话，请查阅本文中孤独摇滚相关词条）,被收录在2025年6月发行的ASIAN KUNG-FU GENERATION 20周年纪念翻唱专辑「AKG TRIBUT」中。</span></p><h4 id='个人向点评-18'><span>个人向点评</span></h4><p><img src="images/47.png" alt="Logo"></p><p><span>此刻是2025年11月7日凌晨3点21分。刚整理完关于jin的歌曲，屏幕上的每一首旋律都承载着这些年追逐音乐企划的回忆。从最初被《阳炎计划》的叙事震撼，到后来沉浸在《BanG Dream！》的现场感，再到《Project Sekqai》的虚拟共鸣，直至如今《学园偶像大师》的新篇——每一个时代性的音乐企划中，似乎都能听见jin那独特的创作灵魂在回响。</span></p><p><span>这何尝不是对“术力口是J-POP乃至整个日系音乐黄埔军校”最生动的印证？那些曾经在耳机里循环过无数遍的歌曲，此刻不再是孤立的音符，而是串联成一条有机的、流动的脉络，从过去延伸而来，向未来奔涌而去。它们不只是回忆的载体，更是照亮前路的微光。</span></p><p><span>而未来，jin仍将在他所擅长的领域继续创作，带领我们走向更广阔的可能性，谱写更多脍炙人口的旋律。</span></p><p><span>（随后又发现，这位创作鬼才居然还写过那么多动画与虚拟偶像的歌曲……待这份总结最终完成，时针已指向凌晨4点15分。）</span></p><p><span>但愿来世，能有某个百科助手替我把这一切都整理好吧。</span></p><p>&nbsp;</p><h3 id='23僕らは今のなかで我们活在当下------宅舞'><span>23.僕らは今のなかで（我们活在当下）——宅舞</span></h3><p><span>演出者：努码兹乡下女团</span></p><h4 id='歌曲简介-23'><span>歌曲简介</span></h4><p><img src="images/48.png" alt="Logo"></p><p><span>《僕らは今のなかで》是《LoveLive!》动画一期片头曲，收录于片头曲单曲《僕らは今のなかで》，由μ&#39;s演唱，发售于2013年1月23日。</span></p><p><span>收录于动画一期原声辑Notes of School idol days中的曲目新しい場所へ和动画二期原声辑Notes of School idol days ～Glory～中的曲目いつもどんなときも、全員のために也使用了本曲的旋律。</span></p><p><span>本曲也在LoveLive!动画二期第12集中被用作插曲。</span></p><h4 id='个人向点评-19'><span>个人向点评</span></h4><p><img src="images/49.png" alt="Logo"></p><p><span>这首《僕らは今のなかで》，不仅是《LoveLive!》企划人气急剧攀升的起点，更堪称其发展史上至关重要的转折点。它恰似一簇恰到好处的星火，在企划蓄势待发的上升期被点燃——随后推出的两季动画，以其饱满的制作诚意、流畅的动态帧率与华丽绚烂的编舞，将这股热潮推向了前所未有的高度。</span></p><p><span>（至今B站仍流传着那段3D建模OP与动画版的对比视频，其间差距，堪称一场“视觉灾难”的生动注脚……当然，那段经典的“抢镜鸟”表情包，也早已成为无数粉丝共同的记忆符号。）</span></p><p><span>歌曲开头那记轻快的小跳步，依次由绚濑绘里、东条希、西木野真姬与星空凛四人完成——仿佛一声青春的起跑信号，拉开了整个时代的序幕。</span></p><p><span>然而遗憾的是，由于种种原因，后来的后辈团体极少翻唱前辈们的经典曲目。正因如此，当莲之空女子学院近期重新演绎这首《僕らは今のなかで》时，才显得如此珍贵而动情。</span></p><p><span>也难怪越来越多的人被莲之空所打动。她们不仅翻唱多首前辈作品，更将VOCALOID曲目乃至《雑踏》等多元音乐纳入舞台——无论观众对企划的发展抱有怎样的看法，或对当下的讨论环境感到何等失望，当熟悉的旋律再次响起，当真挚的歌声穿透时光，我们仍会为这份跨越世代的共鸣而悄然泪下。</span></p><p><span>因为真正的感动，从来不需要解释。</span></p><p>&nbsp;</p><h3 id='24キティkitty------翻唱'><span>24.キティ（Kitty）——翻唱</span></h3><p><span>演出者：金眠、ENKI</span></p><h4 id='歌曲简介-24'><span>歌曲简介</span></h4><p><img src="images/50.png" alt="Logo"></p><p><span>《キティ》是由ツミキ创作，于2025年4月25日投稿至niconico和YouTube的VOCALOID日语原创歌曲，由初音未来演唱。</span></p><p><span>本曲是为游戏《世界计划 彩色舞台 feat. 初音未来》中的组合25点，Nightcord见。提供的歌曲。本家版与SEKAI版投稿相差近2年，是目前世界计划中双版本投稿时间相差第二大的歌曲。第一名为MORE! JUMP! MORE!</span></p><h4 id='p主简介-3'><span>p主简介</span></h4><p><img src="images/51.png" alt="Logo" style="zoom:33%;" /></p><p><strong><span>ツミキ</span></strong><span>（积木p）是活跃在niconico和YouTube上的VOCALOID职人，同时是音乐组合NOMELON NOLEMON的作曲家。其作品有:</span></p><ul><li><p><span>《フォニイ（Phony）（伪物）》是ツミキ于2021年6月5日投稿至niconico和YouTube的CeVIO日文原创歌曲，由可不(KAFU)演唱。本曲为第一首CeVIO神话曲，也是首位非VOCALOID神话曲。本曲也被25点，Nightcord见和Afterglow×96猫翻唱过。</span></p></li><li><p><span>《トウキョウ・シャンディ・ランデヴ（东京 香蒂 幽会 ）》动画《福星小子 2022》ed1，由音乐企划MAISONdes与歌手花谱、VOCALOID制作人ツミキ共同创作，演唱者为花谱。本曲也被Poppin’Party翻唱过。</span></p></li><li><p><span>《アイヴイ（常春藤）》IVY（中文：常春藤；日文：アイヴイ）是游戏《学园偶像大师》的原创曲目，由月村手毬（CV：小鹿奈绪）演唱。（毛球是谁?请你支持）</span></p></li><li><p><span>《チエルカ／エソテリカ》是ツミキ创作、宮下遊演唱的maimai原创曲目。</span></p></li></ul><h4 id='25点nightcord见简介'><span>25点，Nightcord见。简介</span></h4><p><img src="images/52.png" alt="Logo" style="zoom:30%;" /></p><p><span>25点，Nightcord见。（25時、ナイトコードで。）是《世界计划 彩色舞台 feat. 初音未来》的登场团体。（此为日本的30小时制，以东京时间上午六点为一天的分界线，多用于电视台深夜节目报时）。</span></p><p><span>长期发行单曲与专辑中，单曲收录的都为世界计划原创歌曲，即p主专为世界计划写的专供曲目；专辑中收录的都为反唱曲目。目前已经出到了11th《余花にみとれて/D/N/A》与vol.3《25時、ナイトコードで。 SEKAI ALBUM vol.3》。</span></p><p>&nbsp;</p><h3 id='25雑踏僕らの街熙熙攘攘我们的城市------乐队cover'><span>25.雑踏、僕らの街（熙熙攘攘、我们的城市）——乐队cover</span></h3><p><span>演出者：0KB</span></p><h4 id='歌曲简介-25'><span>歌曲简介</span></h4><p><img src="images/53.png" alt="Logo"></p><p><span>《雑踏、僕らの街》是企划GIRLS BAND CRY中组合TOGENASHI TOGEARI6th单曲《雑踏、僕らの街》的主打曲，也是TV动画的主题曲。单曲于2024年5月22日发售。</span></p><p><strong><span>相信大数据/吃一堑</span></strong>
+<span>大约自2024年10月起，《雑踏、僕らの街》OP画面被作为钓鱼素材出现在一系列短视频中，内容通常为封面或视频开头播放一段含有《雑踏、僕らの街》元素的无关内容的画面（如短视频解说等），最后通过某个元素转换到《雑踏、僕らの街》OP画面完成钓鱼。（警惕任何含有天空、流星、人跳楼、“やり残”等元素的视频）。qq群聊中也常常流传着“五个女孩跳楼了”的类似模因；后续由此衍生的系列梗都是基于此模式改进的（有的时候视频正文都要结束了都切到杂踏上）</span></p><h4 id='个人向点评-20'><span>个人向点评</span></h4><p><strong><span>“我超，冰！”</span></strong></p><p><span>理名那段堪称“开口脆”的突兀开场，直接奠定了这首歌的“诈骗”属性——你以为要进抒情段落，结果下一秒就被拽进了冰雪暴的中心。</span></p><p><span>紧接着键盘旋律如冰锥般切入，鼓点密集砸下，吉他solo更是一段比一段疯。理名用实力证明，什么叫“录音室已是巅峰，现场还能再飞一层”。</span></p><p><span>当然，这首歌也有MyGO!!!!!的翻唱版本。</span>
+<span>（没听过的朋友，建议继续保持这个良好状态。你不会想欣赏一个混音混乱、歌声挣扎，连游戏内谱面都仿佛在嘲笑你判断力的作品的。）不过对邦现场的版本倒是值得一听。</span></p><p>&nbsp;</p><h3 id='26あのバンド那个乐队------乐队cover'><span>26.あのバンド（那个乐队）——乐队cover</span></h3><p><span>演出者：0KB</span></p><h4 id='歌曲简介-26'><span>歌曲简介</span></h4><p><img src="images/54.png" alt="Logo" style="zoom:25%;" /></p><p><span>《あのバンド》（那个乐队）是动画《孤独摇滚！》第8话的插入曲，由结束乐队演唱。其伴奏版本(注)亦用作动画第6话的插入曲。</span></p><p><span>《孤独摇滚！》BD/DVD第3卷特典CD收录了该歌曲的路边演版伴奏，第4卷特典CD则收录了该歌曲的剧中歌版本与伴奏。</span></p><h4 id='乐队介绍'><span>乐队介绍</span></h4><p><span>结束乐队（日文：結束バンド，英文：Kessoku Band）是《孤独摇滚！》及其衍生作品中登场的一个架空的乐队，同时在三次元中成员声优也以结束乐队名义参与动画衍生的演唱会和其他音乐会。在三次元里，结束乐队的作品均由Aniplex发行。</span></p><p><img src="images/55.png" alt="Logo"></p><p><span>结束乐队与日本著名摇滚乐队ASIAN KUNG-FU GENERATION（アジアン・カンフー・ジェネレーション）（亚细亚功夫世代）有着密不可分的联系，无论是主角团信息（主角团四人生日数字是乐队四人生日数字的反向排列）、动画版各话标题、乐团活动地区，均可以在三次元中找到对应。后藤正文对应后藤一里，喜多建介对应喜多郁代，伊地知洁对应伊地知虹夏，山田贵洋对应山田凉，两个乐队都活跃于下北泽。</span></p><p><img src="images/56.png" alt="Logo"></p><p><span>其代表作品《Re:Re:》亦有结束乐队（Vocal：后藤一里CV.青山吉能）翻唱版本，为动画《孤独摇滚！》剧场总集篇后篇《剧场总集篇孤独摇滚！ Re:Re:》的主题曲，收录于迷你专辑《Re:結束バンド》中。</span></p><h4 id='个人向点评-21'><span>个人向点评</span></h4><p><span>若是近两年关注中国ACG社群动态的人，多半会对这样一个词感到熟悉：</span></p><p><strong><span>“少女乐队四大名著”</span></strong></p><p><span>它指的是《轻音少女》、《孤独摇滚》、《BanG Dream! It&#39;s MyGo!!!!!》与《GIRLS BAND CRY》——四部以少女乐队为题材的作品。在这其中，《孤独摇滚》有着特殊的意义：在《轻音少女》问世十三年后，它再次将“少女乐队”这一题材拉回大众视野。</span></p><p><span>无论是第五集出色的演出处理，还是第十二集干净利落的收尾，都在2022年的冬季引发广泛讨论。它将“少女通过组建乐队、举办Live，在音乐中解决青春难题、实现自我成长”的叙事模式，重新植入一代观众的认知。这也为后来《MyGo!!!!!》所创造的“奇迹之夏”，以及《GIRLS BAND CRY》即便未登陆B站仍引发热议的现象，埋下了坚实的土壤。</span></p><p><span>除此之外，《孤独摇滚》也充分展现了优秀漫改动画的魔力：它将静态的画面转化为生动鲜活的动态演出，传递出源于原作、却又超越原作的情感张力。即便在2025年的今天，剧情细节或许已经模糊，但我们仍会记得那些抽象而鬼畜的波奇酱表情，记得她蜷缩在角落却又渴望发光的样子——这些瞬间，正是作品跨越时间依然鲜活的生命力。</span></p><p><span>回到音乐本身。动画第八集中使用的《吉他与孤独与蓝色星球》与《那个乐队》并非录音室版本，而是刻意保留了真实Live中的某些细节。制作组藉此将角色的心境转折与成长轨迹，嵌入更具临场感的演出环境中——无论是虹夏扎实的强拍、喜多歌声中仍未褪尽的青涩，还是仅在右声道爆裂绽放的吉他独奏，都传递出录音室版本无法复刻的情感真实。</span></p><p><span>那也是我第一次真正意识到，“Live”形式的音乐与CD录音是如此不同。去看一场演出，和听流媒体或CD的区别究竟在哪里？也许正在于：</span><strong><span>现场的每一分每一秒，都是不可复制的。那是表演者向听众直接传递的心意与决心，是仅存在于那个时空中的、真实的声音。</span></strong></p><p>&nbsp;</p><h3 id='27光るなら若能绽放光芒------乐队cover'><span>27.光るなら（若能绽放光芒）——乐队cover</span></h3><p><span>演出者：星束</span></p><h4 id='歌曲简介-27'><span>歌曲简介</span></h4><p><img src="images/57.png" alt="Logo"></p><p><span>《光るなら》（若能绽放光芒）是TV动画《四月是你的谎言》的OP1。在Goose house乐队看完《四月是你的谎言》漫画原作后，成员们各自的思想汇聚成了这首为该作量身打造的歌曲。可以说每一句歌词、每一个旋律，都和这部作品的剧情完美贴合。</span></p><p><span>这首歌在日宅twitter投票中被评为2014年度最赞动画歌曲，并且在2015年的Newtype动画大奖中获得了主题曲第六名。</span></p><h4 id='乐队简介-6'><span>乐队简介</span></h4><p><img src="C:\Users\13537\AppData\Roaming\Typora\typora-user-images\image-20251110175337289.png" alt="image-20251110175337289" style="zoom: 50%;" /></p><p><span>Goose house是由日本一群创作歌手所组成的音乐团体，最初经过索尼（Sony）产品“Walkman”的宣传企划“Play You. House”选出，至企划结束后更名为“Goose house”，由相同成员以乐团形式持续演出。乐团名称来自随着季节迁徙的雁，引申为期待以群体的力量投入其中。</span></p><p><span>2018年11月26日，工藤秀平、竹渕庆、マナミ、沙夜香、渡边修平五人以“从HOUSE离巢”的形式表示退出Goose House，并以工藤秀平、マナミ、沙夜香、渡边修平四人为核心成员组成Play.Goose（Play You. House + Goose house），每期会请不同的新旧成员参与直播。</span></p><h4 id='个人向点评-22'><span>个人向点评</span></h4><p><span>《光るなら》——《四月是你的谎言》的第一首片头曲，不知牵动了多少人的青春回忆。时至今日，每当那段旋律响起，我们仍会被它明媚节奏下潜藏的深情所打动。</span></p><p><span>这首歌以主角有马公生的口吻写就，听来像是一封埋藏已久的情书，又像是他在黑白键前为自己点燃的勇气之火。它既是告白，也是救赎；是告别，也是启程。</span></p><p><span>“一个人借着黑白键的阶梯走出了地狱，</span>
+<span>一个人凭着梵婀玲的琴弓攀上了天堂。”</span></p><p><span>而故事最后那句轻轻的独白：</span>
+<span>“没有你的四月，马上就要到了。”</span></p><p><span>至此，一切言语都已显得苍白。</span>
+<span>有些旋律，从一开始就写满了结局。</span></p><hr /><p><span>这首歌也被Poppin’Party翻唱过，且仅在其专场演唱会《BanG Dream! 4th☆LIVE Miracle PARTY 2017!》上演唱过一次。</span></p><p>&nbsp;</p><h3 id='28summertime夏日时光------乐队cover'><span>28.Summertime（夏日时光）——乐队cover</span></h3><p><span>演出者：星束</span></p><h4 id='歌曲简介-28'><span>歌曲简介</span></h4><p><img src="images/59.png" alt="Logo"></p><p><span>《Summertime》是Cinnamons于2017年8月7日发布的原创歌曲，收录于专辑《Summertime》，由鈴木まりこ(cinnamons)、原田夏树(evening cinema)演唱。截至目前在YouTube已有3594.16万次观看。</span></p><h4 id='乐队简介-7'><span>乐队简介</span></h4><p><span>evening cinema（外文名：Evening Cinema），日本四人乐队，2015年夏季以主唱兼作曲原田夏树为中心组建，音乐风格融合80年代NEW MUSIC旋律感与AOR系POPS元素 。代表作品包括《Good Luck》《Summertime》及《Night Magic》等。</span></p><p><span>cinnamons由主唱鈴木まりこ、负责吉他兼和声的青山慎司以及鼓手eric组成，是一个善于将糖果般的文字、活泼跳跃的歌声与独树一帜的音乐风格相融的JPOP乐队。在中国使用同名歌曲进行创作的动画「summertime dance」也引起了很大的反响，以亚洲为范围，如今cinnamons在各个社交平台上的影响力都在不断扩大。</span></p><p>&nbsp;</p><h3 id='29午夜公主------乐队原创'><span>29.午夜公主——乐队原创</span></h3><p><span>演出者：指错</span></p><p><img src="images/60.png" alt="Logo" style="zoom:33%;" /></p><p><span>本曲ACG音研部乐队指错原创曲目，请大家到网易云音乐中点一点关注并评论，助力东北ACG音乐更上一层路。</span></p><h3 id='30好像要离开了------乐队原创'><span>30.好像要离开了——乐队原创</span></h3><p><span>演出者：指错</span></p><p><img src="images/61.png" alt="Logo" style="zoom:20%;" /></p><p><span>ACG音研部乐队</span><strong><span>指错</span></strong><span>原创曲目请大家到网易云音乐中点一点关注并评论，助力东北ACG音乐更上一层路。</span></p><h3 id='31ロックンロールは鳴り止まないっ摇滚乐永不停歇------乐队cover'><span>31.ロックンロールは鳴り止まないっ（摇滚乐永不停歇）——乐队cover</span></h3><p><span>演出者：指错</span></p><h4 id='歌曲简介-29'><span>歌曲简介</span></h4><p><img src="images/111.png" alt="Logo"></p><p><span>本曲是日本摇滚乐队神聖かまってちゃん（神圣放逐乐队）于2015年6月24日发表的专辑《ベストかまってちゃん》中收录的曲子。作为片尾live中的曲子出现在电影《剧场版：神圣放逐乐队 停不下来的摇滚乐》。</span></p><h4 id='乐队简介-8'><span>乐队简介</span></h4><p><span>神圣放逐乐队（日语：神聖かまってちゃん）是来自日本千叶县的三人摇滚乐队（曾为四人），2008年成立。由の子（主唱/吉他），mono（队长/键盘），ちばぎん（和声/贝斯，已退出），みさこ（鼓手）组成。于2007年开始在niconico网站上发布PV。</span></p><p><span>为动漫进击的巨人（第三季ED，第四季OP）的御用乐队之一，谏山创在乐队成立初期就是乐队的大粉丝，多次在Twitter宣传他们的歌曲，更希望能邀请乐队为进击的巨人作曲，最后二人一拍即合。下图为の子(图左)与谏山创(图右)。</span></p><p><img src="images/62.png" alt="Logo"></p><p><span>神圣摇滚乐队参与制作的ACG歌曲还有：</span></p><ul><li><p><span>《电波女与青春男》OP《Os-宇宙人》</span></p></li><li><p><span>《蜡笔小新》OP2《夢のENDはいつも目覚まし!》</span></p></li><li><p><span>《恶之华》OP《惡の華 -春日高男》</span></p></li><li><p><span>《进击的巨人》第二季ED《夕暮れの鳥》</span></p></li><li><p><span>《恋如雨止》OP《フロントメモリー》</span></p></li><li><p><span>《进击的巨人》最终季OP《僕の戦争》</span></p></li></ul><h4 id='个人向点评-23'><span>个人向点评</span></h4><p><span>这首歌有很多与之联系的ACG内容也有很多。</span></p><h5 id='动画girls-band-cry12集题目'><span>动画《GIRLS BAND CRY》12集题目</span></h5><p><img src="images\63.png" alt="Logo" style="zoom:33%;" /></p><p><span>动画《GBC》最终话选用神圣放逐乐队的《摇滚乐永不停歇》作为标题，与剧情形成了意味深长的呼应。乐队主唱noko的人生轨迹与动画中的音乐梦想主题形成了鲜明对比。</span></p><p><span>noko在求学期间长期遭受校园霸凌，导致他罹患严重的精神疾病，最终从高中辍学。家庭方面，父亲的家暴和父母的离异给他带来了更多创伤。尽管如此，音乐成为了他唯一的出口。他通过自学开始创作，组建了神圣放逐乐队。</span></p><p><span>2015年，在与gbc动画中同名的BAYCAMP音乐节上演唱这首《摇滚乐永不停歇》时，noko即兴改词呐喊：&quot;像我这样的neet都能站在这里，你们之中也有想成为音乐家的人吧？那就赶紧站上来啊&quot;——这一充满冲击力的现场表现，正是他用音乐对抗命运的真实写照。</span></p><p><span>与动画中主人公走向和解的剧情不同，noko至今仍在与精神障碍抗争，需要长期服药治疗。然而，正是这些源于真实伤痛的作品，以其独特的风格和强烈的情感，成为了许多年轻人的情感寄托，让有着相似遭遇的人感受到共鸣与慰藉。</span></p><h5 id='更衣人偶坠入爱河第二季插曲'><span>《更衣人偶坠入爱河》第二季插曲</span></h5><p><img src="images/64.png" alt="Logo" style="zoom: 25%;" /></p><p><span>在动画《更衣人偶坠入爱河》第二季的第一集中，众人聚集于KTV中所点的歌曲就是神圣放逐乐队的摇滚永不停息，可以很清楚地听清全曲。</span></p><h5 id='花谱翻唱'><span>花谱翻唱</span></h5><p><img src="images/222.avif" alt="Logo" style="zoom: 25%;" /></p><p><span>虚拟歌手花谱在其2020年的线上直播《I SCREAM LIVE》中翻唱了这首歌。设定上，这源自花谱的突然奇想，于是这个live就是诞生。本场live还翻唱了许多经典的ACG歌曲诸如《命に嫌われている。》、《猛独が襲う》、《愛にできることはまだあるかい》等。（本词条由负负供稿）</span></p><p>&nbsp;</p><h3 id='32アンノウンマザーグース不为人知的鹅妈妈童谣------乐队cover'><span>32.アンノウン・マザーグース（不为人知的鹅妈妈童谣）——乐队cover</span></h3><p><span>演出者：指错</span></p><h4 id='歌曲简介-30'><span>歌曲简介</span></h4><p><img src="images/65.png" alt="Logo" style="zoom:20%;" /></p><p><span>《アンノウン・マザーグース》（Unknown Mother-Goose）是wowaka于2017年8月22日发布的VOCALOID日文原创曲，由初音未来 V4X演唱。本曲是wowaka投稿的第12部VOCALOID作品，投稿时隔其上一部VOCALOID作品《Unhappy Refrain》约6年时间，也是由wowaka投稿的</span><strong><span>最后一部</span></strong><span>VOCALOID作品。</span></p><p><span>本曲收录于初音未来十周年纪念专辑《Re:Start》中。</span></p><p><span>于2023年4月1日达成千万再生，是第十四首神话曲。借由本曲，wowaka成为第一位拥有3首VOCALOID神话曲的P主。目前本曲已成为niconico中的VOCALOID歌曲再生数第6名，且是前十名中投稿日期最晚的歌曲。</span></p><p><span>本曲是niconico上在2017年投稿的再生最高的V家曲目。</span></p><p><span>本曲打破了《千本樱》创下的最速1300万、1400万再生记录，为目前虚拟歌手歌曲中最快达成1300万、1400万再生的曲目。</span></p><p><span>本曲另有作者在Hitorie乐队中演唱的版本，收录于乐队的迷你专辑《ai/SOlate》和最佳专辑《4》中，到目前为止都是Hitorie演唱会的常驻曲目。（你怎么知道我去看Hitorie演出了？）</span></p><h4 id='p主简介-4'><span>p主简介</span></h4><p><span>wowaka(現実逃避P)是日本niconico动画上的VOCALOID P、词曲作家、编曲家，ヒトリエ（hitorie）乐队的主唱兼吉他，V家中生代御三家之一（另外两位是ハチ和DECO*27）。wowaka在niconico总共投稿了12首VOCALOID歌曲，全部进入殿堂，8曲达成传说，4曲达成神话。</span></p><p><span>2019年4月5日wowaka因急性心力衰竭病逝，享年31岁。</span></p><p><img src="images/66.png" alt="Logo" style="zoom:100%;" /></p><p><span>这里介绍其三首在其发布当年在niconico平台上再生数最高的三首v家曲：</span></p><ul><li><p><span>《裏表ラバーズ》（里表情人）——2009年</span></p></li><li><p><span>《ワールズエンド・ダンスホール》（世末舞厅）——2010年</span></p></li><li><p><span>《アンノウン・マザーグース》（不为人知的鹅妈妈童谣）——2017年</span></p></li></ul><p><img src="images/67.png" alt="Logo"></p><p><span>此外，wowaka还参与制作了动画《魔法少女小圆》第9话ed，负责这首歌的作词与作曲：</span></p><ul><li><p><span>《and I’m home》</span></p></li></ul><p><span>此曲是动画《魔法少女小圆》中美树沙耶香与佐仓杏子的角色歌，是经典的红蓝cp曲。（配图为wowaka去世1年后推特上苍树莓老师纪念他所发的写真）（作曲的人和曲子所写的人都不在了的世界）</span></p><h4 id='お---お---お---お---お---お---お---お---お---お---お---お'><span>お—お—お—お—お—お—お—お—お—お—お—お</span></h4><p><span>wowaka生前最后一条推特为：</span></p><p><img src="images/68.png" alt="Logo" style="zoom:30%;" /></p><p><span>“令和真美啊，”他曾这样说过。</span>
+<span>可他的时间，却永远停驻在了平成最后的春天。</span></p><p><span>2020年的魔法未来演唱会舞台上，初音未来抱着吉他，模仿着wowaka曾经的姿态，唱着他写下的歌。光影交错间，她的身影与他的记忆在旋律中重叠——仿佛那个天才少年从未离开。</span></p><p><strong><span>“少女停止了翻滚，散弹枪七零八落，自问自答式地讲述着未知的故事，</span></strong>
+<strong><span>在世末舞厅里跳最后一支舞吧。可是，也逃不出现实了”</span></strong></p><p><span>当歌声响起，我们才明白：有些告别，不是结束，而是另一种形式的重逢。他把自己藏进了每一个切分音里，藏进了每一段疾走的旋律中。从此，每当音乐响起，就是他与我们重逢的时刻。</span></p><p><strong><span>今夜，也让我们在律动中与他道一声晚安。</span></strong>
+<strong><span>晚安，wowaka。你的音乐，让刹那成为了永恒。</span></strong></p><p>&nbsp;</p></div></div>
+</body>
+</html>
